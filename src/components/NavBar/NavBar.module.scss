@@ -1,20 +1,40 @@
 @import '../../styles/settings.scss';
+@import '../../styles/media-queries.scss';
 
 .container {
     font-family: $font-header;
+    font-weight: 300;
     .info {
         background-color: black;
         color: white;
         display: flex;
         padding: 20px;
         justify-content: space-between;
+             @include respond-to(big-tablet) {
+                justify-content: center;
+                font-size: 12px;
+            }
+        .left {
+            @include respond-to(big-tablet) {
+                display: none;
+                
+            }
+        }
         .right {
             display: flex;
             justify-content: right;
+            @include respond-to(big-tablet) {
+                justify-content: center;
+            }
             p {
                 margin: 0 10px;
             }
-        }
+            .email {
+                @include respond-to(big-tablet) {
+                    display: none;
+                }
+            }
+        }      
         p {
             margin: 0;
         }
@@ -26,15 +46,25 @@
         display: flex;
         padding: 20px;
         justify-content: space-between;
+        @include respond-to(small-tablet) {
+            justify-content: center;
+        }
+        
         .logo {
             font-size: 24px;
-            padding: 15px10px;
+            padding: 15px 10px;
+            align-items: center;
+            display: flex;
         }
         .nav {
             display: flex;
             list-style-type: none;
             padding: 10px;
             font-size: 24px;
+            align-items: center;
+            @include respond-to(small-tablet) {
+                display: none;
+            }
             li {
                 padding: 5px 12px;
                 .linkActive {
@@ -50,8 +80,11 @@
             list-style-type: none;
             padding: 10px 15px;
             font-size: 35px;
+            @include respond-to(small-tablet) {
+                font-size: 24px;
+            }
             i {
-                padding: 10px;
+                padding: 10px 15px;
                 .linkActive {
                     color: blue;
                 }

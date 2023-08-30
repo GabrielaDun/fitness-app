@@ -11,7 +11,7 @@ const NavBar = () => {
             <div className={styles.right}>
                 <p>Ready for a unique tour?</p>
                 <p> <i className="fa-solid fa-phone"></i> +48 765 432 198</p>
-                <p> <i className="fa-solid fa-envelope"></i> info@nature-escape.com</p>
+                <p className={styles.email}> <i className="fa-solid fa-envelope"></i> info@nature-escape.com</p>
             </div>
         </div>
         <div className={styles.main}>
