@@ -16,3 +16,26 @@
         margin: 0;
     }
 }
+.main {
+    background-color: white;
+    color: black;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    .nav {
+        display: flex;
+        list-style-type: none;
+        padding: 20px 0;
+        font-size: 20px;
+        li {
+            padding: 10px;
+            .linkActive {
+                color: blue;
+            }
+            a {
+                text-decoration: none;
+            }
+
+        }
+    }
+}
