@@ -1,4 +1,4 @@
-import PageTitle from "../PageTitle/PageTitle";
+import PageTitle from "../../common/PageTitle/PageTitle";
 
 const NotFound = () => {
     return (
