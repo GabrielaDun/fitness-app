@@ -16,7 +16,7 @@ const Home = () => {
             < Map />
             < Quote title={'Enjoy the wildness'} subtitle={'MONTIANS'} image={imageUrlOne} />
             < Offer />
-            < Quote title={'Make new friends'} subtitle={'ANIMALS'} image={imageUrlTwo}/>
+            < Quote title={'Make new friends'} subtitle={'PEOPLE & ANIMALS'} image={imageUrlTwo}/>
             < Categories />
             < FollowUs />
         </div>

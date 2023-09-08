@@ -1,0 +1,45 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.root {
+    .slider{
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        height: 400px;
+        width: 100%;
+        color: $color-light;
+        font-family: $font-header;
+        h2 {
+            font-size: 80px;
+            position: relative;
+            font-weight: 100;
+            left: 15%;
+            top: 30%;
+            width: 300px;
+            @include respond-to (big-tablet) {
+                font-size: 50px;
+            }
+        }
+    }
+    .container {
+        margin: 40px 80px;
+        .main {
+            .title {
+                padding: 20px 0 20px 0;
+                font-size: 24px;
+                font-family: $font-header;
+            }
+            .description {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            .downPayment {
+                padding-bottom: 10px;
+                font-size: 18px;
+                font-family: $font-header;
+            }
+        }
+    }
+
+}

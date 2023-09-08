@@ -1,5 +1,4 @@
 import styles from './Quote.module.scss'
-//import backgroundImage from '../../../public/photos/1.jpg'; 
 
 const Quote = props => {
     return (
