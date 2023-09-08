@@ -1,9 +1,14 @@
+import PageTitle from '../../common/PageTitle/PageTitle';
 import styles from './Offer.module.scss'
 
 const Offer = () => {
     return (
         <div>
-            <h1 className={styles.title}>Offer</h1>
+            <PageTitle>BEST OFFERS THIS MONTH</PageTitle>
+            <div className={styles.row}>
+                <div></div>
+
+            </div>
         </div>
     );
 };

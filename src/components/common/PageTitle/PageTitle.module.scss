@@ -6,4 +6,15 @@
     font-size: ($base-size * 3);
     text-transform: uppercase;
     font-family: $font-header;
+    position: relative;
   }
+.title::after {
+  height: 2px;
+  width: 100px;
+  content: '';
+  position: absolute;
+  background-color: $color-dark;
+  top: 85%;
+  right: 45%;
+
+}

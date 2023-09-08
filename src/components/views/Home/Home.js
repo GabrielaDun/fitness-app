@@ -4,17 +4,19 @@ import Map from '../Map/Map';
 import Offer from '../Offer/Offer';
 import Quote from '../Quote/Quote';
 import SliderAndSearch from '../SliderAndSearch/SliderAndSearch';
-import styles from './Home.module.scss'
+//import styles from './Home.module.scss'
 
 const Home = () => {
+    const imageUrlOne = `${process.env.PUBLIC_URL}/photos/1.jpg`;
+    const imageUrlTwo = `${process.env.PUBLIC_URL}/photos/2.jpg`;
+
     return (
         <div>
-            <h1 className={styles.title}>Home</h1>
             < SliderAndSearch />
             < Map />
-            < Quote />
+            < Quote title={'Enjoy the wildness'} subtitle={'MONTIANS'} image={imageUrlOne} />
             < Offer />
-            < Quote />
+            < Quote title={'Make new friends'} subtitle={'ANIMALS'} image={imageUrlTwo}/>
             < Categories />
             < FollowUs />
         </div>
