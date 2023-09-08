@@ -1,24 +1,30 @@
 @import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
 
 .quote {
     background-size: cover;
-    background-position: center;
+    background-position: center center;
+    background-attachment: fixed;
     height: 250px;
     width: 100%;
     color: $color-light;
     h1 {
-        font-size: 64px;
+        font-size: 80px;
         position: relative;
-        top: 30%;
+        top: 25%;
         left: 15%;
         font-family: $font-hand;
-
+            @include respond-to(big-tablet) {
+                font-size: 60px;
+            }
     }
     h3 {
         font-size: 24px;
         position: relative;
-        top: 30%;
+        top: 25%;
         left: 50%;
-
+            @include respond-to(big-tablet) {
+                font-size: 18px;
+            }
     }
 }
