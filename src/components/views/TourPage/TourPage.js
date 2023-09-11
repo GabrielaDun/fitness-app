@@ -1,17 +1,27 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './TourPage.module.scss'
-import { getTourByURL } from '../../../redux/toursRedux';
+import { getTourByURL, updateTours } from '../../../redux/toursRedux';
 import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const TourPage = () => {
      const { url } = useParams();
+     console.log({url}, url)
 
-     const tourData = useSelector(state => getTourByURL(state, url))
-     console.log(url, tourData);
-    
-     //const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${tourData.image}/main.jpg`;
+    const loading = useSelector(state => state.tours.loading);
+
+    const tourData = useSelector(state => getTourByURL(state, url))
+    console.log(tourData);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(updateTours());
+      }, [dispatch]);
+
     const slideImage = `${process.env.PUBLIC_URL}/photos/tours/ancient-greece/main.jpg`;
+
+    if (loading) return <div>Loading...</div>;
 
     if(!tourData) return <Navigate to="/" />
     else return (

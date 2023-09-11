@@ -7,8 +7,8 @@ import SliderAndSearch from '../SliderAndSearch/SliderAndSearch';
 //import styles from './Home.module.scss'
 
 const Home = () => {
-    const imageUrlOne = `${process.env.PUBLIC_URL}/photos/1.jpg`;
-    const imageUrlTwo = `${process.env.PUBLIC_URL}/photos/2.jpg`;
+    const imageUrlOne = `${process.env.PUBLIC_URL}/photos/quotes/1.jpg`;
+    const imageUrlTwo = `${process.env.PUBLIC_URL}/photos/quotes/2.jpg`; 
 
     return (
         <div>
