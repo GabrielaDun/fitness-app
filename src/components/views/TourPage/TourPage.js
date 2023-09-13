@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './TourPage.module.scss'
-import { getTourByURL, updateTours } from '../../../redux/toursRedux';
+import { getTourByURL } from '../../../redux/toursRedux';
 import { Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import Button from '../../common/Button/Button';
 
 const TourPage = () => {
      const { url } = useParams();
@@ -13,11 +13,6 @@ const TourPage = () => {
 
     const tourData = useSelector(state => getTourByURL(state, url))
     console.log(tourData);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(updateTours());
-      }, [dispatch]);
 
     const slideImage = `${process.env.PUBLIC_URL}/photos/tours/ancient-greece/main.jpg`;
 
@@ -36,7 +31,7 @@ const TourPage = () => {
                     <div className={styles.icones}> </div>
                     <div className={styles.title}>Price: {tourData.price}</div>
                     <div className={styles.downPayment}>Down Payment Only: $300</div>
-                    <button className={styles.button}>Book it Now!</button>
+                    <Button>Book it Now!</ Button>
                 </div>
 
             </div>

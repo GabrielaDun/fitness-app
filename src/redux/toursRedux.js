@@ -1,6 +1,6 @@
 // selectors
 
-export const getTourByURL = ( { tours }, tourURL) => tours.find(tour => tour.url === tourURL)
+export const getTourByURL = ( { tours }, tourURL) => tours.data.find(tour => tour.url === tourURL)
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
@@ -12,13 +12,13 @@ export const updateTours = payload => ({type: UPDATE_TOURS, payload});
 export const fetchTours = (dispatch) => {
     fetch('http://localhost:3131/api/tours')
     .then(res => res.json())
-    .then(tours => dispatch(updateTours(tours)))
+    .then(tours => dispatch(updateTours(tours))) 
   };
 
 const toursReducer = (statePart = [], action) => {
     switch (action.type) {
         case UPDATE_TOURS:
-            return [...action.payload]
+            return {loading: false, data: [...action.payload]}
         default:
           return statePart;
       }; 

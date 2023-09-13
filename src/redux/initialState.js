@@ -1,5 +1,9 @@
 const initialState = {
-    tours: []
+    tours: {
+        data: [],
+        loading: true
+    
+    }
 }
 
 export default initialState;
