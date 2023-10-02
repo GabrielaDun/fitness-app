@@ -7,14 +7,15 @@
     text-transform: uppercase;
     font-family: $font-header;
     position: relative;
+    font-weight: 100;
   }
 .title::after {
-  height: 2px;
+  height: 1px;
   width: 100px;
   content: '';
   position: absolute;
   background-color: $color-dark;
-  top: 85%;
+  top: 90%;
   right: 45%;
 
 }

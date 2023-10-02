@@ -7,7 +7,6 @@ const Offer = () => {
             <PageTitle>BEST OFFERS THIS MONTH</PageTitle>
             <div className={styles.row}>
                 <div></div>
-
             </div>
         </div>
     );
