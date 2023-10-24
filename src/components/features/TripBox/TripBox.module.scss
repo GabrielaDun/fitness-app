@@ -1,0 +1,17 @@
+.root {
+    margin: 20px;
+    
+
+    .image {
+        object-fit: cover;
+        left: 0;
+        max-width: 200px;
+        height: 150px;
+        margin: 20px 0;
+    }
+    
+    .button {
+        text-decoration: none;
+        color: white;
+    }
+}

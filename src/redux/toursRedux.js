@@ -1,5 +1,6 @@
 // selectors
 
+export const getAllTours = state => state.tours.data;
 export const getTourByURL = ( { tours }, tourURL) => tours.data.find(tour => tour.url === tourURL)
 
 // actions
