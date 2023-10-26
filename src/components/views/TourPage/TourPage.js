@@ -4,6 +4,7 @@ import styles from './TourPage.module.scss'
 import { getTourByURL } from '../../../redux/toursRedux';
 import { Navigate } from 'react-router-dom';
 import Button from '../../common/Button/Button';
+import AmountWidget from '../../features/AmountWidget/AmountWidget';
 
 const TourPage = () => {
      const { url } = useParams();
@@ -30,7 +31,12 @@ const TourPage = () => {
                     <div className={styles.description}>{tourData.longDescription}</div>
                     <div className={styles.icones}> </div>
                     <div className={styles.title}>Price: {tourData.price}</div>
+                    <div className={styles.title}>More photos:</div>
+                </div>
+                <div className={styles.booking}>
+                    <div className={styles.title}>BOOK THIS TOUR</div>
                     <div className={styles.downPayment}>Down Payment Only: $300</div>
+                    <AmountWidget />
                     <Button>Book it Now!</ Button>
                 </div>
 

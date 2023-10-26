@@ -1,0 +1,46 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.widgetContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 130px;
+    margin: 10px 0;
+    border: 1px solid $color-addition;
+  }
+  
+  .amountInput {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  button {
+    background-color: $color-main;
+    border: none;
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: darken($color: $color-main, $amount: 6)
+    }
+  
+    &:active {
+        background-color: darken($color: $color-main, $amount: 15)
+    }
+  }
+  

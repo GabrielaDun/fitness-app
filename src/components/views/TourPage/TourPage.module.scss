@@ -24,7 +24,12 @@
     }
     .container {
         margin: 40px 80px;
+        display: flex;
+        @include respond-to (big-tablet) {
+            flex-direction: column;
+        }
         .main {
+            flex: 3;
             .title {
                 padding: 20px 0 20px 0;
                 font-size: 24px;
@@ -34,10 +39,22 @@
                 font-size: 14px;
                 line-height: 1.5;
             }
+        }
+        .booking {
+            margin: 0 25px;
+            flex-wrap: wrap;
+            flex: 1;
+            font-family: $font-header;
+            @include respond-to (big-tablet) {
+                margin: 25px 0;
+            }
+            .title {
+                padding: 15px 0 15px 0;
+                font-size: 24px;
+            }
             .downPayment {
                 padding-bottom: 10px;
-                font-size: 18px;
-                font-family: $font-header;
+                font-size: 16px;
             }
         }
     }
