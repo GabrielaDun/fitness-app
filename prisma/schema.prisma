@@ -9,3 +9,17 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Tours {
+  id String @id @default(uuid())
+  title String
+  price Int
+  category String
+  mainContry String
+  imageMain String
+  imagesGallery String
+  shortDescription String
+  longDescription String
+  tourDurationDays Int 
+  tags String
+}
