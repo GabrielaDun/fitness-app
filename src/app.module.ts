@@ -8,9 +8,10 @@ import * as cors from 'cors';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ToursModule } from './tours/tours.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [ToursModule],
+  imports: [ToursModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
