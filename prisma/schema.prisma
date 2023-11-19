@@ -10,16 +10,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tours {
+model Tour {
   id String @id @default(uuid())
   title String
   price Int
-  category String
   mainContry String
   imageMain String
   imagesGallery String
   shortDescription String
   longDescription String
   tourDurationDays Int 
-  tags String
+
+  category Category? @relation(fields: [categoryID], references: [id], onDelete: SetNull)
+  categoryID: String?
+
+  tags TagsOnTours[]
+}
+
+model Category {
+  id String @id @default(uuid())
+  category String
+  tours Tour[]
+}
+
+model Tag {
+  id String @id @default(uuid())
+  tag String
+
+  tours TagsOnTours[]
+}
+
+model TagsOnTours {
+  tag Tag @relation(fields: [tagId], references: [id])
+  tagId String
+  tour Tour @relation(fields: [tourId], references: [id])
+  tourId String
+
+  @@id([tagsId, tourId])
 }
