@@ -12,17 +12,21 @@ datasource db {
 
 model Tour {
   id String @id @default(uuid())
+
   title String
   price Int
-  mainContry String
+  mainCountry String
   imageMain String
   imagesGallery String
   shortDescription String
-  longDescription String
+  longDescription String @db.Text
   tourDurationDays Int 
 
-  category Category? @relation(fields: [categoryID], references: [id], onDelete: SetNull)
-  categoryID: String?
+  createdAt DateTime @default (now())
+  updatedAt DateTime @updatedAt
+
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId String?
 
   tags TagsOnTours[]
 }
@@ -30,7 +34,7 @@ model Tour {
 model Category {
   id String @id @default(uuid())
   category String
-  tours Tour[]
+  tour Tour[]
 }
 
 model Tag {
@@ -46,5 +50,5 @@ model TagsOnTours {
   tour Tour @relation(fields: [tourId], references: [id])
   tourId String
 
-  @@id([tagsId, tourId])
+  @@id([tagId, tourId])
 }

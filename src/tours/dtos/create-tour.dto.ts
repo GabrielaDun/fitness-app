@@ -1,4 +1,11 @@
-import { IsNotEmpty, IsString, Length, IsInt, Min } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  Length,
+  IsInt,
+  Min,
+  IsUUID,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateOrderDTO {
@@ -18,12 +25,7 @@ export class CreateOrderDTO {
   @IsNotEmpty()
   @IsString()
   @Length(10, 30)
-  category: string;
-
-  @IsNotEmpty()
-  @IsString()
-  @Length(10, 30)
-  continent: string;
+  mainCountry: string;
 
   @IsNotEmpty()
   @IsString()
@@ -55,6 +57,6 @@ export class CreateOrderDTO {
 
   @IsNotEmpty()
   @IsString()
-  @Length(10, 30)
-  tags: string;
+  @IsUUID()
+  categoryId: string;
 }
