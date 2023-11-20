@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 
-export class CreateOrderDTO {
+export class CreateTourDTO {
   @IsNotEmpty()
   @IsString()
   @Length(10, 30)
@@ -35,16 +35,15 @@ export class CreateOrderDTO {
   @IsNotEmpty()
   @IsString()
   @Length(10, 30)
-  imageGallery: string;
+  imagesGallery: string;
 
   @IsNotEmpty()
   @IsString()
-  @Length(10, 30)
+  @Length(10, 200)
   shortDescription: string;
 
   @IsNotEmpty()
-  @IsString()
-  @Length(10, 30)
+  @Length(100, 10000)
   longDescription: string;
 
   @IsNotEmpty()
