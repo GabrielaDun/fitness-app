@@ -29,6 +29,7 @@ model Tour {
   categoryId String?
 
   tags TagsOnTours[]
+  order Order []
 }
 
 model Category {
@@ -51,4 +52,28 @@ model TagsOnTours {
   tourId String
 
   @@id([tagId, tourId])
+}
+
+model OrderItem {
+  id String @id @default(uuid())
+  tour Tour @relation(fields: [tourId], references: [id])
+  tourId String
+  description String
+  quantity Int
+  order Order @relation(fields: [orderId], references: [id])
+  orderId String
+}
+
+model Order {
+  id String @id @default(uuid())
+  items OrderItem[]
+  firstName String
+  surname String
+  address String
+  city String
+  country String
+
+  createdAt DateTime @default (now())
+  updatedAt DateTime @updatedAt
+
 }
