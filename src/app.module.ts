@@ -10,9 +10,11 @@ import { AppService } from './app.service';
 import { ToursModule } from './tours/tours.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { CategoriesModule } from './categories/categories.module';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
-  imports: [ToursModule, AuthModule, ConfigModule.forRoot({ isGlobal: true })],
+  imports: [ToursModule, AuthModule, ConfigModule.forRoot({ isGlobal: true }), CategoriesModule, TagsModule],
   controllers: [AppController],
   providers: [AppService],
 })
