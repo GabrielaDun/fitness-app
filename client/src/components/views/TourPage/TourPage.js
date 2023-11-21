@@ -15,9 +15,9 @@ const TourPage = () => {
     const tourData = useSelector(state => getTourByURL(state, url))
     console.log(tourData);
 
-    const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/main.jpg`;
-
     if (loading) return <div>Loading...</div>;
+    const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/main.jpg`;
+    const otherImageBase =`${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/`;
 
     if(!tourData) return <Navigate to="/" />
     else return (
@@ -30,8 +30,16 @@ const TourPage = () => {
                     <div className={styles.title}>{tourData.title}</div>
                     <div className={styles.description}>{tourData.longDescription}</div>
                     <div className={styles.icones}> </div>
-                    <div className={styles.title}>Price: {tourData.price}</div>
+                    <div className={styles.title}>Price: ${tourData.price}</div>
                     <div className={styles.title}>More photos:</div>
+                    <div className={styles.photos}>
+                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}1.jpg`} />
+                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}2.jpg`} />
+                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}3.jpg`} />
+                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}4.jpg`} />
+                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}5.jpg`} />
+                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}6.jpg`} />
+                    </div>
                 </div>
                 <div className={styles.booking}>
                     <div className={styles.title}>BOOK THIS TOUR</div>

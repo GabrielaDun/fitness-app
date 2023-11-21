@@ -22,7 +22,7 @@ const NavBar = () => {
                 <li><NavLink className={ ({ isActive }) =>  isActive ? styles.linkActive : undefined}
                     to="/">Home</NavLink></li>
                 <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
-                    to="/favorite">Your Cart</NavLink></li>
+                    to="/cart">Your Cart</NavLink></li>
                 <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
                     to="/about">About</NavLink></li>
             </div>
