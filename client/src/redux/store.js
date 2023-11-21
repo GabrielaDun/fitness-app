@@ -1,16 +1,16 @@
 import { combineReducers, createStore } from 'redux';
-import initialState from './initialState';
 import toursReducer from './toursRedux';
+import CartReducer from './cartRedux';
 
 const subreducers = {
   tours: toursReducer,
+  cart: CartReducer,
 }
 
 const reducer = combineReducers(subreducers)
 
 const store = createStore(
     reducer,
-    initialState, 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
   

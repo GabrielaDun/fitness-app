@@ -1,19 +1,25 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './TourPage.module.scss'
 import { getTourByURL } from '../../../redux/toursRedux';
 import { Navigate } from 'react-router-dom';
 import Button from '../../common/Button/Button';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
+import { addToCart } from '../../../redux/cartRedux';
 
 const TourPage = () => {
      const { url } = useParams();
-     console.log({url}, url)
 
     const loading = useSelector(state => state.tours.loading);
 
     const tourData = useSelector(state => getTourByURL(state, url))
     console.log(tourData);
+
+    const dispatch = useDispatch();
+    const handleAddToCart = e => {
+        e.preventDefault();
+        dispatch(addToCart(tourData.id))
+    }
 
     if (loading) return <div>Loading...</div>;
     const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/main.jpg`;
@@ -45,7 +51,7 @@ const TourPage = () => {
                     <div className={styles.title}>BOOK THIS TOUR</div>
                     <div className={styles.downPayment}>Down Payment Only: $300</div>
                     <AmountWidget />
-                    <Button>Book it Now!</ Button>
+                    <Button onClick={handleAddToCart}>Add it to cart</ Button>
                 </div>
 
             </div>

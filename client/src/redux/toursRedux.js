@@ -1,5 +1,10 @@
 import { API_URL } from '../config';
 
+const initialStateTours = {
+    data: [],
+    loading: true
+};
+
 // selectors
 export const getAllTours = state => state.tours.data;
 export const getTourByURL = ( { tours }, tourURL) => tours.data.find(tour => tour.url === tourURL)
@@ -17,7 +22,7 @@ export const fetchTours = (dispatch) => {
     .then(tours => dispatch(updateTours(tours))) 
   };
 
-const toursReducer = (statePart = [], action) => {
+const toursReducer = (statePart = initialStateTours, action) => {
     switch (action.type) {
         case UPDATE_TOURS:
             return {loading: false, data: [...action.payload]}
