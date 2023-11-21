@@ -15,6 +15,7 @@ model Tour {
 
   title String
   price Int
+  url String
   mainCountry String
   imageMain String
   imagesGallery String
@@ -29,7 +30,7 @@ model Tour {
   categoryId String?
 
   tags TagsOnTours[]
-  order Order []
+  orderItem OrderItem []
 }
 
 model Category {
@@ -56,17 +57,19 @@ model TagsOnTours {
 
 model OrderItem {
   id String @id @default(uuid())
-  tour Tour @relation(fields: [tourId], references: [id])
-  tourId String
   description String
   quantity Int
+
   order Order @relation(fields: [orderId], references: [id])
   orderId String
+
+  tour Tour @relation(fields: [tourId], references: [id])
+  tourId String
 }
 
 model Order {
   id String @id @default(uuid())
-  items OrderItem[]
+  orderItems OrderItem[]
   firstName String
   surname String
   address String

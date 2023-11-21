@@ -24,6 +24,11 @@ export class CreateTourDTO {
 
   @IsNotEmpty()
   @IsString()
+  @Length(8, 30)
+  url: string;
+
+  @IsNotEmpty()
+  @IsString()
   @Length(10, 30)
   mainCountry: string;
 

@@ -1,5 +1,6 @@
-// selectors
+import { API_URL } from '../config';
 
+// selectors
 export const getAllTours = state => state.tours.data;
 export const getTourByURL = ( { tours }, tourURL) => tours.data.find(tour => tour.url === tourURL)
 
@@ -11,7 +12,7 @@ const UPDATE_TOURS = createActionName('UPDATE_POST')
 export const updateTours = payload => ({type: UPDATE_TOURS, payload});
 
 export const fetchTours = (dispatch) => {
-    fetch('http://localhost:3131/api/tours')
+    fetch(`${API_URL}/app/tours`)
     .then(res => res.json())
     .then(tours => dispatch(updateTours(tours))) 
   };
