@@ -6,7 +6,7 @@ import styles from "./TripBox.module.scss"
 
 const TripBox = (props) => {
     console.log(props);
-    const slideImage = `${process.env.PUBLIC_URL}/photos/tours/ancient-greece/main.jpg`;
+    const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${props.url}/main.jpg`;
     return (
         <div className={styles.root}>
             <h2>{props.title}</h2>

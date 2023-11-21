@@ -15,7 +15,7 @@ const TourPage = () => {
     const tourData = useSelector(state => getTourByURL(state, url))
     console.log(tourData);
 
-    const slideImage = `${process.env.PUBLIC_URL}/photos/tours/ancient-greece/main.jpg`;
+    const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/main.jpg`;
 
     if (loading) return <div>Loading...</div>;
 
