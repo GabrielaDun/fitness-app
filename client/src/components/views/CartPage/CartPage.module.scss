@@ -22,4 +22,44 @@
             }
         }
     }
+    .categories{
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ccc; 
+        justify-content: center;
+        .product {
+            flex: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .price {
+            flex: 1;
+        }
+        .downPayment {
+            flex: 1;
+        }
+        .amount {
+            flex: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .total {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+    }
+    .empty {
+        margin: 30px;
+        padding: 40px;
+        align-items: center;
+        text-align: center;
+    }
 }

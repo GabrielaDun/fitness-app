@@ -12,7 +12,7 @@ const Trip = () => {
     return (
         <div className={styles.grid}>
             {trips.map(trip => (
-                <div key={trip._id} className={styles.gridItem}>
+                <div key={trip.id} className={styles.gridItem}>
                     <TripBox {...trip} />
                 </div>
             ))}

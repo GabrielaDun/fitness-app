@@ -1,0 +1,56 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.root {
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc; 
+    .product {
+        flex: 5;
+        display: flex;
+        align-items: center;
+        .x {
+            padding: 0 30px 0 10px;
+            display: flex;
+        }
+        .image {
+            object-fit: cover;
+            left: 0;
+            max-width: 120px;
+            height: 120px;
+            margin: 20px 0;
+            @include respond-to (small-tablet ) {
+                display: none;
+            }
+        }
+        .title {
+            display: flex;
+            padding: 0 30px;
+            font-size: 16px;
+            line-height: 25px;
+        }
+    }
+    .price {
+        flex: 1;
+    }
+    .downPayment {
+        flex: 1;
+    }
+    .amount {
+        flex: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .total {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+}
