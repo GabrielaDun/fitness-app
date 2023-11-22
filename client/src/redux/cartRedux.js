@@ -14,7 +14,8 @@ const initialStateCart = {
 };
 
 // selectors
-//export const getAllCart = state => state.cart.data;
+export const getAllCart = state => state.cart.order;
+
 //export const getTourByURL = ( { cart }, tourURL) => cart.data.find(tour => tour.url === tourURL)
 
 // actions
@@ -28,11 +29,12 @@ export const addToCart = payload => ({type: ADD_TO_CART, payload});
 const CartReducer = (state = initialStateCart, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const existingItemIndex = state.order.orderItems.findIndex(item => item.tourId === action.payload.tourId);
-            if (existingItemIndex >= 0 ) {
-                const updatedOrder = state.order.orderItems.map((item, index) => 
-                    index === existingItemIndex
-                        ? { ...item, quantity: item.quantity + 1 }
+            const existingItem = state.order.orderItems.find(item => item.tourId === action.payload.tourId);
+            if (existingItem ) {
+                const {quantity} = action.payload;
+                const updatedOrder = state.order.orderItems.map(item => 
+                    item === existingItem
+                        ? { ...item, quantity: item.quantity + quantity }
                         : item
                 ) 
                 return {
@@ -40,7 +42,15 @@ const CartReducer = (state = initialStateCart, action) => {
                     order: { ...state.order, orderItems: updatedOrder}
                 }
             } else {
-                const newOrderItem = {id: uuidv4(), ...action.payload, quantity: 1};
+                const orderId = uuidv4()
+                const orderItemId = uuidv4();
+                const { tourId, description, quantity} = action.payload;
+                const newOrderItem = {
+                    id: orderItemId, 
+                    tourId: tourId, 
+                    description: description, 
+                    quantity: quantity, 
+                    orderId: orderId};
                 return {
                     ...state,
                     order: { ...state.order, orderItems: [...state.order.orderItems, newOrderItem]}

@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom';
 import Button from '../../common/Button/Button';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 import { addToCart } from '../../../redux/cartRedux';
+import { useState } from 'react';
 
 const TourPage = () => {
      const { url } = useParams();
@@ -15,10 +16,13 @@ const TourPage = () => {
     const tourData = useSelector(state => getTourByURL(state, url))
     console.log(tourData);
 
+    const [quantity, setQuantity] = useState(1);
+
     const dispatch = useDispatch();
-    const handleAddToCart = e => {
-        e.preventDefault();
-        dispatch(addToCart(tourData.id))
+    const handleAddToCart = () => {
+
+        dispatch(addToCart({tourId: tourData.id, description: 'add order description', quantity: quantity}))
+        setQuantity(0);
     }
 
     if (loading) return <div>Loading...</div>;
@@ -50,8 +54,8 @@ const TourPage = () => {
                 <div className={styles.booking}>
                     <div className={styles.title}>BOOK THIS TOUR</div>
                     <div className={styles.downPayment}>Down Payment Only: $300</div>
-                    <AmountWidget />
-                    <Button onClick={handleAddToCart}>Add it to cart</ Button>
+                    <AmountWidget quantity={quantity} setQuantity={setQuantity} />
+                    <Button onClick={() => handleAddToCart()}>Add to cart</ Button>
                 </div>
 
             </div>

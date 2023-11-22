@@ -1,32 +1,29 @@
-import React, { useState } from 'react';
 import styles from './AmountWidget.module.scss';
 
-const AmountWidget = () => {
-  const [amount, setAmount] = useState(0);
+const AmountWidget = ({quantity, setQuantity}) => {
 
-  // Client doesn't want more than 6 booking to be possible at once
-  const increaseAmount = () => {
-    if (amount < 6) {
-        setAmount(prevAmount => prevAmount + 1);
+  const increaseQuantity = () => {
+    if (quantity < 6) {
+        setQuantity(prevQuantity => prevQuantity + 1);
     }
   }
 
-  const decreaseAmount = () => {
-    if (amount > 0) {
-      setAmount(prevAmount => prevAmount - 1);
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(prevQuantity => prevQuantity - 1);
     }
   }
 
   return (
     <div className={styles.widgetContainer}>
-      <button onClick={decreaseAmount}>-</button>
+      <button onClick={decreaseQuantity}>-</button>
       <input 
         type="number" 
-        value={amount} 
+        value={quantity} 
         readOnly 
-        className={styles.amountInput}
+        className={styles.quantityInput}
       />
-      <button onClick={increaseAmount}>+</button>
+      <button onClick={increaseQuantity}>+</button>
     </div>
   );
 }

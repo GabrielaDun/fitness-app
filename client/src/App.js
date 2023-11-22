@@ -7,6 +7,7 @@ import TourPage from './components/views/TourPage/TourPage';
 import { useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { fetchTours } from './redux/toursRedux';
+import CartPage from './components/views/CartPage/CartPage';
 
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path="*" element={< NotFound />} />
           <Route path="/" element={< Home />} />
-          <Route path="/cart" element={< TourPage />} />
+          <Route path="/cart" element={< CartPage/>} />
           <Route path="/tour/:url" element={< TourPage />} />
         </Routes>
     </main>
