@@ -14,7 +14,7 @@ const initialStateCart = {
 };
 
 // selectors
-export const getAllCart = state => state.cart.order;
+export const getAllCart = state => state.cart.order.orderItems;
 
 //export const getTourByURL = ( { cart }, tourURL) => cart.data.find(tour => tour.url === tourURL)
 
@@ -50,10 +50,14 @@ const CartReducer = (state = initialStateCart, action) => {
                     tourId: tourId, 
                     description: description, 
                     quantity: quantity, 
-                    orderId: orderId};
+                    orderId: orderId
+                };
                 return {
                     ...state,
-                    order: { ...state.order, orderItems: [...state.order.orderItems, newOrderItem]}
+                    order: { 
+                        ...state.order, 
+                        id: orderId,
+                        orderItems: [...state.order.orderItems, newOrderItem]}
                 }
             }
         default:

@@ -21,7 +21,7 @@ const TourPage = () => {
     const dispatch = useDispatch();
     const handleAddToCart = () => {
 
-        dispatch(addToCart({tourId: tourData.id, description: 'add order description', quantity: quantity}))
+        dispatch(addToCart({tourId: tourData.id, description: '', quantity: quantity}))
         setQuantity(0);
     }
 
