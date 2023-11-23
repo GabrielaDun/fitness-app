@@ -3,11 +3,15 @@ import styles from './CartPage.module.scss'
 import { useSelector } from "react-redux";
 import { getAllCart } from "../../../redux/cartRedux";
 import CartBox from '../../features/CartBox/CartBox';
+import { useState } from 'react';
+import Button from '../../common/Button/Button';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
     const cartData = useSelector(getAllCart)
     console.log(cartData);
     const slideImage = `${process.env.PUBLIC_URL}/photos/headers/cart.jpg`;
+    const [totalPrice, setTotalPrice] = useState(0);
 
     return (
         <div className={styles.root}>
@@ -21,7 +25,7 @@ const CartPage = () => {
                     <div className={styles.price} ><p>Price</p></div>
                     <div className={styles.downPayment}><p>Down Payment</p></div>
                     <div className={styles.amount}>Qunatity</div>
-                    <div className={styles.total}><p>Total Price</p></div>
+                    <div className={styles.total}><p>Total down payment</p></div>
                 </div>
             </div>
             )}
@@ -33,10 +37,24 @@ const CartPage = () => {
             <div className={styles.grid}>
                 {cartData.map(cart => (
                     <div key={cart.id} className={styles.gridItem}>
-                        <CartBox {... cart} />
+                        <CartBox {...cart} />
                     </div>
                 ))}
             </div>
+            {cartData.length > 0 &&  (
+            <div className={styles.end}>
+                <div className={styles.summery}>
+                    <div className={styles.blank}></div>
+                    <div className={styles.totalPrice}>Total down payment</div>
+                    <div className={styles.price}>{totalPrice}</div>
+                </div>
+                <div className={styles.buttonSpace}>
+                    <Link className={styles.button} to={'/checkout'}>
+                        <Button>Go to checkout</Button>
+                    </Link>
+                </div>
+            </div>
+            )}
         </div>
     );
 };

@@ -4,12 +4,13 @@ import AmountWidget from '../AmountWidget/AmountWidget';
 import styles from './CartBox.module.scss';
 import { useState } from 'react';
 
-const CartBox = (props) => {
-  const tourData = useSelector(state => getTourById(state, props.tourId))
+const CartBox = ({tourId, quantity}) => {
+  const tourData = useSelector(state => getTourById(state, tourId))
   console.log(tourData);
-  const [quantity, setQuantity] = useState(props.quantity);
+  const [amount, setAmount] = useState(quantity);
   const downPayment = Math.round(tourData.price / 1000) * 100
-  const totalPrice = quantity * downPayment;
+  const singleItemTotalPrice = amount * downPayment;
+
 
   const image = `${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/main.jpg`
   return (
@@ -25,8 +26,8 @@ const CartBox = (props) => {
       </div>
       <div className={styles.price} ><p>${tourData.price}</p></div>
       <div className={styles.downPayment}><p>${downPayment}</p></div>
-      <div className={styles.amount}><AmountWidget quantity={quantity} setQuantity={setQuantity}/></div>
-      <div className={styles.total}><p>${totalPrice}</p></div>
+      <div className={styles.amount}><AmountWidget quantity={amount} setQuantity={setAmount}/></div>
+      <div className={styles.total}><p>${singleItemTotalPrice}</p></div>
     </div>
   );
 }
