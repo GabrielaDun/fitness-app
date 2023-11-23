@@ -1,17 +1,30 @@
 import styles from './CartPage.module.scss'
 
 import { useSelector } from "react-redux";
-import { getAllCart } from "../../../redux/cartRedux";
+import {  getAllCart, getAllCartWithTour } from "../../../redux/cartRedux";
 import CartBox from '../../features/CartBox/CartBox';
-import { useState } from 'react';
 import Button from '../../common/Button/Button';
 import { Link } from 'react-router-dom';
+import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
+import { useEffect, useState } from 'react';
 
 const CartPage = () => {
     const cartData = useSelector(getAllCart)
     console.log(cartData);
     const slideImage = `${process.env.PUBLIC_URL}/photos/headers/cart.jpg`;
+
+    const cartDetailedData = useSelector(getAllCartWithTour)
+    console.log(cartDetailedData);
+
     const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        let newTotalPrice = 0;
+        for (let trip of cartDetailedData) {
+            newTotalPrice += trip.quantity * CalculeteDownPayment(trip.tourDetails.price);
+        }
+        setTotalPrice(newTotalPrice);
+    }, [cartDetailedData])
 
     return (
         <div className={styles.root}>

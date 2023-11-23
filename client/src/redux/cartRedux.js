@@ -1,5 +1,6 @@
 // initialState
 import { v4 as uuidv4 } from 'uuid';
+import { getAllTours } from './toursRedux';
 
 const initialStateCart = {
     order: {
@@ -15,6 +16,20 @@ const initialStateCart = {
 
 // selectors
 export const getAllCart = state => state.cart.order.orderItems;
+
+export const getAllCartWithTour = state => {
+    const cartItem = state.cart.order.orderItems;
+    const tours = getAllTours(state);
+
+    if (!cartItem || !tours) {
+        return []; 
+    }
+
+    return cartItem.map(item => {
+        const tourDetails = tours.find(tour => tour.id === item.tourId);
+        return { ...item, tourDetails};
+    });
+}
 
 //export const getTourByURL = ( { cart }, tourURL) => cart.data.find(tour => tour.url === tourURL)
 

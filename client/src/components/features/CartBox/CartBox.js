@@ -3,12 +3,13 @@ import { getTourById } from '../../../redux/toursRedux';
 import AmountWidget from '../AmountWidget/AmountWidget';
 import styles from './CartBox.module.scss';
 import { useState } from 'react';
+import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 
 const CartBox = ({tourId, quantity}) => {
   const tourData = useSelector(state => getTourById(state, tourId))
   console.log(tourData);
   const [amount, setAmount] = useState(quantity);
-  const downPayment = Math.round(tourData.price / 1000) * 100
+  const downPayment = CalculeteDownPayment(tourData.price)
   const singleItemTotalPrice = amount * downPayment;
 
 
