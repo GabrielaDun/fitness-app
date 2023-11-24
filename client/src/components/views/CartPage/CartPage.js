@@ -59,7 +59,7 @@ const CartPage = () => {
                 <div className={styles.summery}>
                     <div className={styles.blank}></div>
                     <div className={styles.totalPrice}>Total down payment</div>
-                    <div className={styles.price}>{totalPrice}</div>
+                    <div className={styles.price}>${totalPrice}</div>
                 </div>
                 <div className={styles.buttonSpace}>
                     <Link className={styles.button} to={'/checkout'}>

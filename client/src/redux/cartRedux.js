@@ -35,12 +35,15 @@ export const getAllCartWithTour = state => {
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
+
 const ADD_TO_CART = createActionName('ADD_TO_CART')
 const CHANGE_CART_AMOUNT = createActionName('CHANGE_CART_AMOUNT')
+const ADD_DESCRIPTION = createActionName('ADD_DESCRIPTION')
 
 // action creator
 export const addToCart = payload => ({type: ADD_TO_CART, payload});
 export const changeCartAmount = payload => ({type: CHANGE_CART_AMOUNT, payload})
+export const addDesciption = payload => ({type: ADD_DESCRIPTION, payload})
 
 
 const CartReducer = (state = initialStateCart, action) => {
@@ -98,6 +101,22 @@ const CartReducer = (state = initialStateCart, action) => {
                     orderItems: updatedOrderItems
                 }
             };
+        }
+        case ADD_DESCRIPTION: {
+            const {tourId, description} = action.payload;
+            const updatedOrder = state.order.orderItems.map(item => {
+                if(item.tourId === tourId) {
+                    return {...item, description: description}
+                }
+                return item;
+            })
+            return {
+                ...state,
+                order: {
+                    ...state.order,
+                    orderItems: updatedOrder
+                }
+            }
         }
             
         default:
