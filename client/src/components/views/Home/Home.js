@@ -13,8 +13,8 @@ const Home = () => {
     return (
         <div>
             < SliderAndSearch />
-            < Quote title={'Enjoy the wildness'} subtitle={'MONTIANS'} image={imageUrlOne} />
             < Offer />
+            < Quote title={'Enjoy the wildness'} subtitle={'MONTIANS'} image={imageUrlOne} />
             < Quote title={'Make new friends'} subtitle={'PEOPLE & ANIMALS'} image={imageUrlTwo}/>
             < Map />
             < Categories />

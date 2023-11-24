@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import styles from './AmountWidget.module.scss';
 
-const AmountWidget = ({quantity, setQuantity}) => {
+const AmountWidget = (tourId) => {
+
+  const [quantity, setQuantity] = useState(0);
 
   const increaseQuantity = () => {
     if (quantity < 6) {
