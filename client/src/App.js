@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { fetchTours } from './redux/toursRedux';
 import CartPage from './components/views/CartPage/CartPage';
-import Checkout from './components/views/Checkout/Checkout';
+import CheckoutPage from './components/views/Checkout/CheckoutPage';
 
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/" element={< Home />} />
           <Route path="/cart" element={< CartPage/>} />
           <Route path="/tour/:url" element={< TourPage />} />
-          <Route path="/checkout" element={ < Checkout /> } /> 
+          <Route path="/checkout" element={ < CheckoutPage /> } /> 
         </Routes>
     </main>
   );

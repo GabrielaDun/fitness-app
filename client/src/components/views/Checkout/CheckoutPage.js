@@ -1,12 +1,14 @@
-import styles from './CartPage.module.scss'
+import styles from './CheckoutPage.module.scss'
 
 import { useSelector } from "react-redux";
 import {  getAllCart, getAllCartWithTour } from "../../../redux/cartRedux";
 import CartBox from '../../features/CartBox/CartBox';
 import Button from '../../common/Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Checkout = () => {
+const CheckoutPage = () => {
+    const navigate = useNavigate();
+
     const cartData = useSelector(getAllCart)
     console.log(cartData);
     const slideImage = `${process.env.PUBLIC_URL}/photos/headers/checkout.jpg`;
@@ -14,11 +16,17 @@ const Checkout = () => {
     const cartDetailedData = useSelector(getAllCartWithTour)
     console.log(cartDetailedData);
 
+    const goToCart = () => {
+        navigate('/checkout');
+        window.scrollTo(0, 0);
+    };
+
+
 
     return (
         <div className={styles.root}>
             <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
-                <h2>Cart</h2>
+                <h2>Checkout</h2>
             </div>
             {cartData.length > 0 && (
             <div className={styles.cart}>
@@ -30,6 +38,11 @@ const Checkout = () => {
                     <div className={styles.total}><p>Total down payment</p></div>
                 </div>
             </div>
+            )}
+            {cartData.length === 0 && (
+                <div className={styles.empty}>
+                    <h2>Your cart is empty</h2>
+                </div>
             )}
             <div className={styles.grid}>
                 {cartData.map(cart => (
@@ -43,9 +56,12 @@ const Checkout = () => {
                 <div className={styles.summery}>
                     <div className={styles.blank}></div>
                     <div className={styles.totalPrice}>Total down payment</div>
-                    <div className={styles.price}>${totalPrice}</div>
+                    <div className={styles.price}>$8</div>
                 </div>
                 <div className={styles.buttonSpace}>
+                <div className={styles.button} onClick={goToCart}>
+                    <Button>Go to cart</Button>
+                </div>
                     <Link className={styles.button} to={'/thank-you'}>
                         <Button>Make a booking</Button>
                     </Link>
@@ -56,4 +72,4 @@ const Checkout = () => {
     );
 };
 
-export default Checkout;
+export default CheckoutPage;

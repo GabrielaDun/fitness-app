@@ -85,9 +85,13 @@
         }
     
     }
-    .button {
+    .buttonSpace {
         display: flex;
         justify-content: right;
-        margin: 40px;
+        .button {
+            display: flex;
+            margin: 40px;
+        }
+
     }
 }
