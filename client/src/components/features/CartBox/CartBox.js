@@ -27,7 +27,7 @@ const CartBox = ({tourId, quantity}) => {
       </div>
       <div className={styles.price} ><p>${tourData.price}</p></div>
       <div className={styles.downPayment}><p>${downPayment}</p></div>
-      <div className={styles.amount}><AmountWidget quantity={amount} setQuantity={setAmount}/></div>
+      <div className={styles.amount}><AmountWidget tourId={tourId} quantity={amount} setQuantity={setAmount} immediateUpdate={true}/></div>
       <div className={styles.total}><p>${singleItemTotalPrice}</p></div>
     </div>
   );

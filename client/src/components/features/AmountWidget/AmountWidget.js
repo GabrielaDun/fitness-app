@@ -1,21 +1,32 @@
-import { useState } from 'react';
+
 import styles from './AmountWidget.module.scss';
+import { useDispatch } from 'react-redux';
+import { changeCartAmount } from '../../../redux/cartRedux';
 
-const AmountWidget = (tourId) => {
+const AmountWidget = ({ tourId, quantity, setQuantity, immediateUpdate = false }) => {
+  const dispatch = useDispatch();
 
-  const [quantity, setQuantity] = useState(0);
+  const changeQuantity = (newQuantity) => {
+    setQuantity(newQuantity);
+    if (immediateUpdate) {
+      dispatch(changeCartAmount({
+        tourId: tourId, 
+        plusMinus: newQuantity > quantity ? 'increase' : 'decrease'
+      }));
+    }
+  };
 
   const increaseQuantity = () => {
-    if (quantity < 6) {
-        setQuantity(prevQuantity => prevQuantity + 1);
+    if (quantity < 10) {
+      changeQuantity(quantity + 1);
     }
-  }
+  };
 
   const decreaseQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(prevQuantity => prevQuantity - 1);
+    if (quantity > 1) {
+      changeQuantity(quantity - 1);
     }
-  }
+  };
 
   return (
     <div className={styles.widgetContainer}>

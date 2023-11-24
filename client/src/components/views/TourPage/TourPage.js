@@ -21,8 +21,10 @@ const TourPage = () => {
     const dispatch = useDispatch();
     const handleAddToCart = () => {
 
-        dispatch(addToCart({tourId: tourData.id, description: '', quantity: quantity}))
-        setQuantity(0);
+        dispatch(addToCart({
+            tourId: tourData.id, 
+            description: '', 
+            quantity: quantity}))
     }
 
     if (loading) return <div>Loading...</div>;
@@ -54,7 +56,7 @@ const TourPage = () => {
                 <div className={styles.booking}>
                     <div className={styles.title}>BOOK THIS TOUR</div>
                     <div className={styles.downPayment}>Down Payment Only: $300</div>
-                    <AmountWidget quantity={quantity} setQuantity={setQuantity} />
+                    <AmountWidget tourId={tourData.id} quantity={quantity} setQuantity={setQuantity} immediateUpdate={false} />
                     <Button onClick={() => handleAddToCart()}>Add to cart</ Button>
                 </div>
 

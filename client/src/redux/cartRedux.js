@@ -36,9 +36,11 @@ export const getAllCartWithTour = state => {
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
 const ADD_TO_CART = createActionName('ADD_TO_CART')
+const CHANGE_CART_AMOUNT = createActionName('CHANGE_CART_AMOUNT')
 
 // action creator
 export const addToCart = payload => ({type: ADD_TO_CART, payload});
+export const changeCartAmount = payload => ({type: CHANGE_CART_AMOUNT, payload})
 
 
 const CartReducer = (state = initialStateCart, action) => {
@@ -75,6 +77,29 @@ const CartReducer = (state = initialStateCart, action) => {
                         orderItems: [...state.order.orderItems, newOrderItem]}
                 }
             }
+        case CHANGE_CART_AMOUNT: {
+            const {tourId, plusMinus } = action.payload;
+            const updatedOrderItems = state.order.orderItems.map(item => {
+                if(item.tourId === tourId) {
+                    let newQuantity = item.quantity;
+                    if(plusMinus === 'increase') {
+                        newQuantity++;
+                    } else if (plusMinus === 'decrease' && item.quantity > 1 ) {
+                        newQuantity--;
+                    }
+                    return {...item, quantity: newQuantity}
+                }
+                 return item;
+            });
+            return {
+                ...state,
+                order: {
+                    ...state.order,
+                    orderItems: updatedOrderItems
+                }
+            };
+        }
+            
         default:
           return state;
       }; 
