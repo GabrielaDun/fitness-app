@@ -1,0 +1,52 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.container {
+    font-family: $font-header;
+    font-weight: 300;
+    .main {
+        padding: 30px;
+        background-color: $color-dark;
+        color: $color-light;
+        display: flex;
+        justify-content: space-between;
+        
+        .logo {
+            font-size: 24px;
+            align-items: center;
+            display: flex;
+        }
+        .nav {
+            display: flex;
+            list-style-type: none;
+            font-size: 18px;
+            align-items: center;
+            @include respond-to(small-tablet) {
+                display: none;
+            }
+            li {
+                color: $color-light;
+                padding: 5px 12px;
+                .linkActive {
+                    color: $color-addition;
+                }
+                a {
+                    text-decoration: none;
+                    color: $color-light;
+                }
+            }
+        }
+        .right {
+            display: flex;
+            justify-content: right;
+            padding-top: 10px;
+            p {
+                margin: 0 10px;
+            }
+            .subscribe{
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }   
+    }
+}
