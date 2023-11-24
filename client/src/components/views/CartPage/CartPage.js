@@ -18,12 +18,12 @@ const CartPage = () => {
     const cartDetailedData = useSelector(getAllCartWithTour)
     console.log(cartDetailedData);
 
-    const [totalPrice, setTotalPrice] = useState(0);
-
     const goToCheckout = () => {
         navigate('/checkout');
         window.scrollTo(0, 0);
     };
+
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         let newTotalPrice = 0;

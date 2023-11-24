@@ -1,10 +1,12 @@
 import styles from './CheckoutPage.module.scss'
 
 import { useSelector } from "react-redux";
-import {  getAllCart, getAllCartWithTour } from "../../../redux/cartRedux";
-import CartBox from '../../features/CartBox/CartBox';
+import { getAllCart, getAllCartWithTour } from "../../../redux/cartRedux";
 import Button from '../../common/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
+import CheckoutBox from '../../features/CheckoutBox/CheckoutBox';
+import { useEffect, useState } from 'react';
+import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 
 const CheckoutPage = () => {
     const navigate = useNavigate();
@@ -13,15 +15,22 @@ const CheckoutPage = () => {
     console.log(cartData);
     const slideImage = `${process.env.PUBLIC_URL}/photos/headers/checkout.jpg`;
 
-    const cartDetailedData = useSelector(getAllCartWithTour)
-    console.log(cartDetailedData);
 
     const goToCart = () => {
-        navigate('/checkout');
+        navigate('/cart');
         window.scrollTo(0, 0);
     };
 
+    const [totalPrice, setTotalPrice] = useState(0);
+    const cartDetailedData = useSelector(getAllCartWithTour)
 
+    useEffect(() => {
+        let newTotalPrice = 0;
+        for (let trip of cartDetailedData) {
+            newTotalPrice += trip.quantity * CalculeteDownPayment(trip.tourDetails.price);
+        }
+        setTotalPrice(newTotalPrice);
+    }, [cartDetailedData])
 
     return (
         <div className={styles.root}>
@@ -41,13 +50,13 @@ const CheckoutPage = () => {
             )}
             {cartData.length === 0 && (
                 <div className={styles.empty}>
-                    <h2>Your cart is empty</h2>
+                    <h2>Your cart is empty. You have nothing to checkout</h2>
                 </div>
             )}
             <div className={styles.grid}>
                 {cartData.map(cart => (
                     <div key={cart.id} className={styles.gridItem}>
-                        <CartBox {...cart} />
+                        <CheckoutBox {...cart} />
                     </div>
                 ))}
             </div>
@@ -56,11 +65,11 @@ const CheckoutPage = () => {
                 <div className={styles.summery}>
                     <div className={styles.blank}></div>
                     <div className={styles.totalPrice}>Total down payment</div>
-                    <div className={styles.price}>$8</div>
+                    <div className={styles.price}>${totalPrice}</div>
                 </div>
                 <div className={styles.buttonSpace}>
                 <div className={styles.button} onClick={goToCart}>
-                    <Button>Go to cart</Button>
+                    <Button>Go back to cart</Button>
                 </div>
                     <Link className={styles.button} to={'/thank-you'}>
                         <Button>Make a booking</Button>

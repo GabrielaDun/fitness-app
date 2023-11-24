@@ -16,6 +16,7 @@ const initialStateCart = {
 
 // selectors
 export const getAllCart = state => state.cart.order.orderItems;
+export const getAllOrder = state => state.cart.order;
 
 export const getAllCartWithTour = state => {
     const cartItem = state.cart.order.orderItems;
@@ -30,8 +31,12 @@ export const getAllCartWithTour = state => {
         return { ...item, tourDetails};
     });
 }
+export const getOrderByTourId = ( state, tourId) => {
+    const orders = state.cart.order.orderItem;
+    if(!orders) return undefined
+    return orders.find(o => o.tourId === tourId)
+}
 
-//export const getTourByURL = ( { cart }, tourURL) => cart.data.find(tour => tour.url === tourURL)
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
