@@ -2,7 +2,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getAllTours } from './toursRedux';
 
-const initialStateCart = {
+export const initialStateCart = {
     order: {
         id: '',
         orderItems: [],
@@ -12,6 +12,7 @@ const initialStateCart = {
         city: '',
         country: '',
     },
+    loading: true,
 };
 
 // selectors

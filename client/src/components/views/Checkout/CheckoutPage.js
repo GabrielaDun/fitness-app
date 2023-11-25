@@ -25,12 +25,16 @@ const CheckoutPage = () => {
     const cartDetailedData = useSelector(getAllCartWithTour)
 
     useEffect(() => {
-        let newTotalPrice = 0;
-        for (let trip of cartDetailedData) {
-            newTotalPrice += trip.quantity * CalculeteDownPayment(trip.tourDetails.price);
-        }
-        setTotalPrice(newTotalPrice);
-    }, [cartDetailedData])
+        const timer = setTimeout(() => {
+            let newTotalPrice = 0;
+            for (let trip of cartDetailedData) {
+                newTotalPrice += trip.quantity * CalculeteDownPayment(trip.tourDetails?.price || 0);
+            }
+            setTotalPrice(newTotalPrice);
+        }, 500); // // Delay for 0.5 seconds to enable refreshing of checkout page
+    
+        return () => clearTimeout(timer); // Cleanup the timer
+    }, [cartDetailedData]);
 
     return (
         <div className={styles.root}>

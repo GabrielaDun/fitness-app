@@ -4,9 +4,10 @@ import { useSelector } from "react-redux";
 import {  getAllCart, getAllCartWithTour } from "../../../redux/cartRedux";
 import CartBox from '../../features/CartBox/CartBox';
 import Button from '../../common/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 import { useEffect, useState } from 'react';
+import { getTourLoading } from '../../../redux/toursRedux';
 
 const CartPage = () => {
     const navigate = useNavigate();
@@ -25,15 +26,25 @@ const CartPage = () => {
 
     const [totalPrice, setTotalPrice] = useState(0);
 
+    
     useEffect(() => {
-        let newTotalPrice = 0;
-        for (let trip of cartDetailedData) {
-            newTotalPrice += trip.quantity * CalculeteDownPayment(trip.tourDetails.price);
-        }
-        setTotalPrice(newTotalPrice);
-    }, [cartDetailedData])
+        const timer = setTimeout(() => {
+            let newTotalPrice = 0;
+            for (let trip of cartDetailedData) {
+                newTotalPrice += trip.quantity * CalculeteDownPayment(trip.tourDetails?.price || 0);
+            }
+            setTotalPrice(newTotalPrice);
+        }, 500); // Delay for 0.5 seconds to enable refreshing of orderpage
+    
+        return () => clearTimeout(timer); 
+    }, [cartDetailedData]);
 
-    return (
+    const loading = useSelector(getTourLoading);
+
+    if (loading) return <div>Loading...</div>;
+
+    if(!cartData) return <Navigate to="/" />
+    else return (
         <div className={styles.root}>
             <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
                 <h2>Cart</h2>

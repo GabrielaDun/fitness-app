@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './TourPage.module.scss'
-import { getTourByURL } from '../../../redux/toursRedux';
+import { getTourByURL, getTourLoading } from '../../../redux/toursRedux';
 import { Navigate } from 'react-router-dom';
 import Button from '../../common/Button/Button';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
@@ -11,7 +11,7 @@ import { useState } from 'react';
 const TourPage = () => {
      const { url } = useParams();
 
-    const loading = useSelector(state => state.tours.loading);
+    const loading = useSelector(getTourLoading);
 
     const tourData = useSelector(state => getTourByURL(state, url))
     console.log(tourData);
