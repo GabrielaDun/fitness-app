@@ -42,7 +42,7 @@ const CartBox = ({tourId, quantity}) => {
         <div className={styles.main}>
           <div className={styles.product}>
             <div className={styles.x}>
-              <button onClick={handleDeleteTour}><i class="fa-solid fa-x"></i></button>
+              <button onClick={handleDeleteTour}><i className="fa-solid fa-x"></i></button>
             </div>
             <img 
               className={styles.image}

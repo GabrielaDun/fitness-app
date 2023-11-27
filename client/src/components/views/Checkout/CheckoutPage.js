@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import CheckoutBox from '../../features/CheckoutBox/CheckoutBox';
 import { useEffect, useState } from 'react';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
+import OrderForm from '../../features/OrderForm/OrderForm';
 
 const CheckoutPage = () => {
     const navigate = useNavigate();
@@ -71,10 +72,13 @@ const CheckoutPage = () => {
                     <div className={styles.totalPrice}>Total down payment</div>
                     <div className={styles.price}>${totalPrice}</div>
                 </div>
-                <div className={styles.buttonSpace}>
-                <div className={styles.button} onClick={goToCart}>
-                    <Button>Go back to cart</Button>
+                <div className={styles.orderForm}>
+                    < OrderForm />
                 </div>
+                <div className={styles.buttonSpace}>
+                    <div className={styles.button} onClick={goToCart}>
+                        <Button>Go back to cart</Button>
+                    </div>
                     <Link className={styles.button} to={'/thank-you'}>
                         <Button>Make a booking</Button>
                     </Link>
