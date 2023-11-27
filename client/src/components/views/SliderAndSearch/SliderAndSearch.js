@@ -7,9 +7,9 @@ const SliderAndSearch = () => {
 
     const images = [
         { url: `${baseURL}1.jpg`, caption: 'Astonishing Wildlife' },
-        { url: `${baseURL}2.jpg`, caption: 'Spectacular Sunsets' },
-        { url: `${baseURL}3.jpg`, caption: 'Captivating Cultures' },
         { url: `${baseURL}4.jpg`, caption: 'Majestic Mountains' },
+        { url: `${baseURL}3.jpg`, caption: 'Captivating Cultures' },
+        { url: `${baseURL}2.jpg`, caption: 'Spectacular Sunsets' },
         { url: `${baseURL}5.jpg`, caption: 'Dazzling Beaches' },
         { url: `${baseURL}6.jpg`, caption: 'Beautiful Nature' },
         { url: `${baseURL}7.jpg`, caption: 'Breathtaking Views' },
@@ -21,7 +21,7 @@ const SliderAndSearch = () => {
     useEffect(() => {
         const interval = setInterval(() => {
           setCurrentIndex(currentIndex => (currentIndex + 1) % images.length);
-        }, 10000);
+        }, 8000);
         return () => clearInterval(interval);
       }, []);
 
