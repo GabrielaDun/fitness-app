@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './OrderForm.module.scss';
+import Button from '../../common/Button/Button';
 
 const OrderForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -38,9 +39,7 @@ const OrderForm = () => {
                 {errors.country && <span className={styles.error}>{errors.country.message}</span>}
             </div>
 
-            {/* Add other input fields here with similar structure */}
-
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
         </form>
     );
 }
