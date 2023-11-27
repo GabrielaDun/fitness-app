@@ -45,11 +45,13 @@ const createActionName = actionName => `app/posts/${actionName}`;
 const ADD_TO_CART = createActionName('ADD_TO_CART')
 const CHANGE_CART_AMOUNT = createActionName('CHANGE_CART_AMOUNT')
 const ADD_DESCRIPTION = createActionName('ADD_DESCRIPTION')
+const DELETE_ORDER_ITEM = createActionName('DELETE_ORDER_ITEM')
 
 // action creator
 export const addToCart = payload => ({type: ADD_TO_CART, payload});
 export const changeCartAmount = payload => ({type: CHANGE_CART_AMOUNT, payload})
 export const addDesciption = payload => ({type: ADD_DESCRIPTION, payload})
+export const deleteOrderItem = payload => ({type: DELETE_ORDER_ITEM, payload })
 
 
 const CartReducer = (state = initialStateCart, action) => {
@@ -121,6 +123,17 @@ const CartReducer = (state = initialStateCart, action) => {
                 order: {
                     ...state.order,
                     orderItems: updatedOrder
+                }
+            }
+        }
+        case DELETE_ORDER_ITEM: {
+            const tourIdToDelete = action.payload.tourId;
+            const updatedOrdersItems = state.order.orderItems.filter(item => item.tourId !== tourIdToDelete);
+            return {
+                ...state,
+                order: {
+                    ...state.order,
+                    orderItems: updatedOrdersItems
                 }
             }
         }

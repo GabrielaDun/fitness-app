@@ -17,8 +17,17 @@
                 padding: 0 30px 0 10px;
                 display: flex;
                 button {
+                    color: $color-dark-gray;
                     background: none;
                     border: none;
+                    &:hover {
+                        color: darken($color: $color-dark-gray, $amount: 12);
+                        font-size: larger;
+                      }
+                    
+                    &:active {
+                        color: $color-dark;
+                    }
                 }
             }
             .image {

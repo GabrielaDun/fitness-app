@@ -4,7 +4,7 @@ import AmountWidget from '../AmountWidget/AmountWidget';
 import styles from './CartBox.module.scss';
 import { useState } from 'react';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
-import { addDesciption } from '../../../redux/cartRedux';
+import { addDesciption, deleteOrderItem } from '../../../redux/cartRedux';
 import { Navigate } from 'react-router-dom';
 
 const CartBox = ({tourId, quantity}) => {
@@ -15,7 +15,10 @@ const CartBox = ({tourId, quantity}) => {
   const [description, setDescription] = useState('')
 
   const handleDeleteTour = (event) => {
-
+    console.log(tourId);
+    dispatch(deleteOrderItem({
+      tourId: tourId
+    }))
   }
 
   const handleDescription = (event) => {
@@ -39,7 +42,7 @@ const CartBox = ({tourId, quantity}) => {
         <div className={styles.main}>
           <div className={styles.product}>
             <div className={styles.x}>
-              <button onClick={handleDeleteTour}>X</button>
+              <button onClick={handleDeleteTour}><i class="fa-solid fa-x"></i></button>
             </div>
             <img 
               className={styles.image}
