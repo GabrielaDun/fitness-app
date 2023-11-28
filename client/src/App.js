@@ -10,6 +10,7 @@ import { fetchTours } from './redux/toursRedux';
 import CartPage from './components/views/CartPage/CartPage';
 import CheckoutPage from './components/views/Checkout/CheckoutPage';
 import Footer from './components/layout/Footer/Footer';
+import ThankYou from './components/views/ThankYou/ThankYou';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/cart" element={< CartPage/>} />
           <Route path="/tour/:url" element={< TourPage />} />
           <Route path="/checkout" element={ < CheckoutPage /> } /> 
+          <Route path="/thank-you" element={ <ThankYou /> } />
         </Routes>
       <Footer />
     </main>

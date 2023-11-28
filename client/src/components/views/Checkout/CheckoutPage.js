@@ -2,25 +2,17 @@ import styles from './CheckoutPage.module.scss'
 
 import { useSelector } from "react-redux";
 import { getAllCart, getAllCartWithTour } from "../../../redux/cartRedux";
-import Button from '../../common/Button/Button';
-import { Link, useNavigate } from 'react-router-dom';
 import CheckoutBox from '../../features/CheckoutBox/CheckoutBox';
 import { useEffect, useState } from 'react';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 import OrderForm from '../../features/OrderForm/OrderForm';
 
 const CheckoutPage = () => {
-    const navigate = useNavigate();
 
     const cartData = useSelector(getAllCart)
     console.log(cartData);
     const slideImage = `${process.env.PUBLIC_URL}/photos/headers/checkout.jpg`;
 
-
-    const goToCart = () => {
-        navigate('/cart');
-        window.scrollTo(0, 0);
-    };
 
     const [totalPrice, setTotalPrice] = useState(0);
     const cartDetailedData = useSelector(getAllCartWithTour)
@@ -76,12 +68,6 @@ const CheckoutPage = () => {
                     < OrderForm />
                 </div>
                 <div className={styles.buttonSpace}>
-                    <div className={styles.button} onClick={goToCart}>
-                        <Button>Go back to cart</Button>
-                    </div>
-                    <Link className={styles.button} to={'/thank-you'}>
-                        <Button>Make a booking</Button>
-                    </Link>
                 </div>
             </div>
             )}
