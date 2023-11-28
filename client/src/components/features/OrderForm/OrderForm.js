@@ -38,6 +38,14 @@ const OrderForm = () => {
                 />
                 {errors.country && <span className={styles.error}>{errors.country.message}</span>}
             </div>
+            <div className={styles.inputGroup}>
+                <input 
+                    type="text"
+                    placeholder="City"
+                    {...register("city", { required: "City is required" })}
+                />
+                {errors.city && <span className={styles.error}>{errors.city.message}</span>}
+            </div>
 
             <Button type="submit">Submit</Button>
         </form>
