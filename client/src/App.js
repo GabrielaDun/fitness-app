@@ -1,5 +1,5 @@
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from "./components/views/Home/Home";
 import NavBar from './components/layout/NavBar/NavBar';
 import NotFound from './components/views/NotFound/NotFound';
@@ -11,15 +11,23 @@ import CartPage from './components/views/CartPage/CartPage';
 import CheckoutPage from './components/views/Checkout/CheckoutPage';
 import Footer from './components/layout/Footer/Footer';
 import ThankYou from './components/views/ThankYou/ThankYou';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
 const App = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   useEffect(() => fetchTours(dispatch), [dispatch]);
 
   return (
     <main>  
       <NavBar />
+      <TransitionGroup>
+        <CSSTransition
+          key={location.key}
+          timeout={300}
+          classNames="page-transition"
+          >
         <Routes>
           <Route path="*" element={< NotFound />} />
           <Route path="/" element={< Home />} />
@@ -28,6 +36,8 @@ const App = () => {
           <Route path="/checkout" element={ < CheckoutPage /> } /> 
           <Route path="/thank-you" element={ <ThankYou /> } />
         </Routes>
+        </CSSTransition>
+      </TransitionGroup>
       <Footer />
     </main>
   );

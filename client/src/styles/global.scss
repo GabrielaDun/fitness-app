@@ -6,4 +6,23 @@ body {
     font-family: $font-body;
     font-size: ($base-size * 1.1);
     letter-spacing: 0.5px;
-  }
+}
+
+// Going from page to page transition
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
