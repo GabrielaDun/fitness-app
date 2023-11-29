@@ -12,9 +12,10 @@
         justify-content: space-between;
         
         .logo {
-            font-size: 24px;
+            font-size: 32px;
             align-items: center;
             display: flex;
+            font-family: $font-hand;
         }
         .nav {
             display: flex;

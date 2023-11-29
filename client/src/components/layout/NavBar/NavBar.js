@@ -1,7 +1,15 @@
+import { useState } from 'react';
 import styles from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+
+    const [isNavVisible, setIsNavVisible] = useState(false);
+
+    const toggleNav = () => {
+        setIsNavVisible(!isNavVisible)
+    }
+
     return (
     <div className={styles.container}>
         <div className={styles.info}>
@@ -27,8 +35,15 @@ const NavBar = () => {
                     to="/about">About</NavLink></li>
             </div>
             <div className={styles.symbols}>
-                <i className="fa-solid fa-basket-shopping"></i>
-                <i className="fa-solid fa-bars"></i>
+                <NavLink to="/cart"><i className="fa-solid fa-basket-shopping"></i></NavLink>
+                <i className={`fa-solid fa-bars ${styles.navIcon}`} onClick={toggleNav}></i>
+                {isNavVisible && (
+                    <ul className={styles.dropdownMenu}>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/cart">Your Cart</NavLink></li>
+                        <li><NavLink to="/about">About</NavLink></li>
+                    </ul>
+                )}
             </div>
         </div>
     </div>
