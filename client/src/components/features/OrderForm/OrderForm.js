@@ -32,7 +32,7 @@ const OrderForm = ({totalDownPayment, cartData}) => {
             body: JSON.stringify({orderData, orderItemsData})
         };
 
-        fetch(`${API_URL}/orders`, options)
+        fetch(`${API_URL}/app/orders`, options)
             .then(res => {
                 if(res.status === 201) {
                     console.log('Success')
