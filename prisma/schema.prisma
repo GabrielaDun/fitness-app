@@ -75,6 +75,8 @@ model Order {
   address String
   city String
   country String
+  email String
+  downPayment Int
 
   createdAt DateTime @default (now())
   updatedAt DateTime @updatedAt
