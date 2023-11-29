@@ -65,7 +65,7 @@ const CheckoutPage = () => {
                     <div className={styles.price}>${totalPrice}</div>
                 </div>
                 <div className={styles.orderForm}>
-                    < OrderForm totalDownPayment={totalPrice} />
+                    < OrderForm cartData={cartData} totalDownPayment={totalPrice} />
                 </div>
                 <div className={styles.buttonSpace}>
                 </div>

@@ -69,7 +69,6 @@ model OrderItem {
 
 model Order {
   id String @id @default(uuid())
-  orderItems OrderItem[]
   firstName String
   surname String
   address String
@@ -77,6 +76,7 @@ model Order {
   country String
   email String
   downPayment Int
+  orderItems OrderItem[]
 
   createdAt DateTime @default (now())
   updatedAt DateTime @updatedAt

@@ -11,6 +11,11 @@ import { Transform } from 'class-transformer';
 export class OrderItemDTO {
   @IsNotEmpty()
   @IsString()
+  @IsUUID()
+  id: string;
+
+  @IsNotEmpty()
+  @IsString()
   @Length(3, 15)
   description: string;
 

@@ -5,21 +5,31 @@ import Button from '../../common/Button/Button';
 import {  useNavigate } from 'react-router-dom';
 import { API_URL } from '../../../config';
 
-const OrderForm = ({totalDownPayment}) => {
+const OrderForm = ({totalDownPayment, cartData}) => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
     const onSubmit = (data) => {
-        data.downPayment = totalDownPayment;
-        console.log(data);
+        const orderData = {
+            ...data,
+            downPayment: totalDownPayment
+        }
+        const orderItemsData = cartData.map(item => ({
+            id: item.id,
+            quantity: item.quantity,
+            description: item.description,
+            tourId: item.tourId,
+            orderId: item.orderId,
+
+        }))
 
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({orderData, orderItemsData})
         };
 
         fetch(`${API_URL}/orders`, options)
