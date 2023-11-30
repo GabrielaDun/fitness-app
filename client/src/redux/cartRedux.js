@@ -46,12 +46,14 @@ const ADD_TO_CART = createActionName('ADD_TO_CART')
 const CHANGE_CART_AMOUNT = createActionName('CHANGE_CART_AMOUNT')
 const ADD_DESCRIPTION = createActionName('ADD_DESCRIPTION')
 const DELETE_ORDER_ITEM = createActionName('DELETE_ORDER_ITEM')
+const RESET_CART = createActionName('RESET_CART')
 
 // action creator
 export const addToCart = payload => ({type: ADD_TO_CART, payload});
 export const changeCartAmount = payload => ({type: CHANGE_CART_AMOUNT, payload})
 export const addDesciption = payload => ({type: ADD_DESCRIPTION, payload})
 export const deleteOrderItem = payload => ({type: DELETE_ORDER_ITEM, payload })
+export const resetCart = payload => ({ type: RESET_CART, payload})
 
 
 const CartReducer = (state = initialStateCart, action) => {
@@ -137,6 +139,8 @@ const CartReducer = (state = initialStateCart, action) => {
                 }
             }
         }
+        case RESET_CART: 
+        return initialStateCart;
             
         default:
           return state;

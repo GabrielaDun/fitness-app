@@ -4,59 +4,84 @@ import styles from './OrderForm.module.scss';
 import Button from '../../common/Button/Button';
 import {  useNavigate } from 'react-router-dom';
 import { API_URL } from '../../../config';
-import { useSelector } from 'react-redux';
-import { getAllOrder } from '../../../redux/cartRedux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllOrder, resetCart } from '../../../redux/cartRedux';
 
 const OrderForm = ({totalDownPayment, cartData}) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { register, handleSubmit, formState: { errors } } = useForm();
     
     const currectOrderData = useSelector(getAllOrder);
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const orderData = {
             ...data,
             downPayment: totalDownPayment,
             id: currectOrderData.id
         }
         const orderItemsData = cartData.map(item => ({
-            id: item.id,
             quantity: item.quantity,
             description: item.description,
             tourId: item.tourId,
             orderId: item.orderId,
 
         }))
-        console.log(orderData, 'AAA', orderItemsData);
-
-        const options = {
+        const createOptionsOrder = (data) => ({
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(orderData)
-        };
-
-        fetch(`${API_URL}/app/orders`, options)
-            .then(res => {
+            body: JSON.stringify(data)
+        });
+        const optionsOrder = createOptionsOrder(orderData);
+        //const optionsOrderItems = createOptionsOrder(orderItemsData);
+    
+        const handleFetch = async (url, options, successMessage) => {
+            try {
+                const res = await fetch(url, options);
                 if(res.status === 201) {
-                    console.log('Success')
-                    navigate('/thank-you');
-                    window.scrollTo(0, 0);
+                    console.log(successMessage);
+                    return res;
                 } else {
-                    console.error('Error submitting order:', res.status)
+                    console.error('Error submitting', res.status);
+                    throw new Error('Fetch failed');
                 }
-            })
-            .catch(err => {
-                console.error('Server Error', err)
-            })
+            } catch (err) {
+                console.error('Server Error', err);
+                throw err;
+            }
+        }
+    
+        try {
+            // Wait for the first fetch to complete
+            await handleFetch(`${API_URL}/app/orders`, optionsOrder, 'Order success');
+    
+    
+            // Proceed with the second fetch only after the first one completes
+
+            console.log(cartData, 'AAA', orderItemsData);
+            console.log('Type of orderItemsData:', typeof orderItemsData);
+            console.log('Is orderItemsData an array:', Array.isArray(orderItemsData));
+    
+            await Promise.all(orderItemsData.map(item => 
+                handleFetch(`${API_URL}/app/orderItems`, createOptionsOrder(item), 'OrderItem success')
+            ));
+    
+            navigate('/thank-you');
+            window.scrollTo(0, 0);
+            dispatch(resetCart());
+    
+        } catch (error) {
+            console.error('Error in submitting order or order items:', error);
+        }
 
     };
+
     const goToCart = () => {
         navigate('/cart');
         window.scrollTo(0, 0);
     };
-
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
