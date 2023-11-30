@@ -129,8 +129,22 @@
         
                 li {
                     padding: 20px 30px;
+                    text-decoration: none;
                     &:hover {
                         background-color: $color-gray;
+                    }
+                    a {
+                        color: $color-dark; // Explicitly set the link color to black
+                        text-decoration: none;
+            
+                        &:hover {
+                            color: $color-main; // Optional: Change color on hover
+                        }
+            
+                        // Styling for active link
+                        &.active {
+                            color: $color-main; // Color for the active link
+                        }
                     }
                 }
         

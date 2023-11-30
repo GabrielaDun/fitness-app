@@ -27,19 +27,6 @@ export class OrdersController {
   }
   @Post('/')
   create(@Body() orderData: CreateOrderDTO) {
-    const {
-      firstName,
-      surname,
-      address,
-      city,
-      country,
-      email,
-      downPayment,
-      orderItems,
-    } = orderData;
-    return this.ordersService.create(
-      { firstName, surname, address, city, country, email, downPayment },
-      orderItems,
-    );
+    return this.ordersService.create(orderData);
   }
 }

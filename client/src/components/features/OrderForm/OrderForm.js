@@ -4,16 +4,20 @@ import styles from './OrderForm.module.scss';
 import Button from '../../common/Button/Button';
 import {  useNavigate } from 'react-router-dom';
 import { API_URL } from '../../../config';
+import { useSelector } from 'react-redux';
+import { getAllOrder } from '../../../redux/cartRedux';
 
 const OrderForm = ({totalDownPayment, cartData}) => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    
+    const currectOrderData = useSelector(getAllOrder);
 
     const onSubmit = (data) => {
         const orderData = {
             ...data,
-            downPayment: totalDownPayment
+            downPayment: totalDownPayment,
+            id: currectOrderData.id
         }
         const orderItemsData = cartData.map(item => ({
             id: item.id,
@@ -23,13 +27,14 @@ const OrderForm = ({totalDownPayment, cartData}) => {
             orderId: item.orderId,
 
         }))
+        console.log(orderData, 'AAA', orderItemsData);
 
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({orderData, orderItemsData})
+            body: JSON.stringify(orderData)
         };
 
         fetch(`${API_URL}/app/orders`, options)

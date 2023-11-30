@@ -1,9 +1,5 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-} from '@nestjs/common';
-import { Order, OrderItem } from '@prisma/client';
+import { Injectable } from '@nestjs/common';
+import { Order } from '@prisma/client';
 import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
@@ -20,26 +16,16 @@ export class OrdersService {
     });
   }
   public async create(
-    orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>,
-    orderItemsData: OrderItem[],
+    orderData: Omit<Order, 'createdAt' | 'updatedAt'>,
   ): Promise<Order> {
     try {
       return await this.prismaService.order.create({
         data: {
           ...orderData,
-          orderItems: {
-            create: orderItemsData,
-          },
         },
       });
     } catch (error) {
-      if (error.code === 'P2025') {
-        throw new BadRequestException('Order does not exist');
-      } else {
-        throw new InternalServerErrorException(
-          'An error occurred while creating an order',
-        );
-      }
+      console.log(error);
     }
   }
 }

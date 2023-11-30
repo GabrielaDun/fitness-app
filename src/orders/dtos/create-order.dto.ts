@@ -7,6 +7,7 @@ export class OrderItemDTO {
 }
 
 export class CreateOrderDTO {
+  id: string;
   firstName: string;
   surname: string;
   address: string;
@@ -14,6 +15,4 @@ export class CreateOrderDTO {
   country: string;
   email: string;
   downPayment: number;
-
-  orderItems: OrderItemDTO[];
 }
