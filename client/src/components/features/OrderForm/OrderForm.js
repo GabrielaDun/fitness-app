@@ -57,13 +57,8 @@ const OrderForm = ({totalDownPayment, cartData}) => {
             // Wait for the first fetch to complete
             await handleFetch(`${API_URL}/app/orders`, optionsOrder, 'Order success');
     
-    
             // Proceed with the second fetch only after the first one completes
 
-            console.log(cartData, 'AAA', orderItemsData);
-            console.log('Type of orderItemsData:', typeof orderItemsData);
-            console.log('Is orderItemsData an array:', Array.isArray(orderItemsData));
-    
             await Promise.all(orderItemsData.map(item => 
                 handleFetch(`${API_URL}/app/orderItems`, createOptionsOrder(item), 'OrderItem success')
             ));

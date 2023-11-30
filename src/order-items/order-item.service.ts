@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { OrderItem } from '@prisma/client';
 import { PrismaService } from 'src/shared/services/prisma.service';
+import { CreateOrderItemDTO } from './dtos/create-orderItem.dto';
 
 @Injectable()
 export class OrderItemService {
@@ -14,17 +15,14 @@ export class OrderItemService {
       where: { id },
     });
   }
-  public async create(
-    orderItemsData: Omit<OrderItem, 'id'>[],
-  ): Promise<OrderItem[]> {
+  public async create(orderItemsData: CreateOrderItemDTO): Promise<OrderItem> {
     console.log('orderItemsData backend:', orderItemsData);
     try {
-      await this.prismaService.orderItem.createMany({
+      const createdItems = await this.prismaService.orderItem.createMany({
         data: orderItemsData,
       });
-
-      // If you need to return the created items, you might need an additional query here
-      return []; // Modify this as per your requirement
+      console.log('Create Items [0]', createdItems[0]);
+      return createdItems[0];
     } catch (error) {
       console.log(error);
       throw error;

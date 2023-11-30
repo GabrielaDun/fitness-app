@@ -26,7 +26,7 @@ export class OrderItemController {
     return order;
   }
   @Post('/')
-  create(@Body() orderData: [CreateOrderItemDTO]) {
+  create(@Body() orderData: CreateOrderItemDTO) {
     return this.ordersItemService.create(orderData);
   }
 }

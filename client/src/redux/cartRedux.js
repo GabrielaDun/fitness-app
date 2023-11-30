@@ -72,21 +72,19 @@ const CartReducer = (state = initialStateCart, action) => {
                     order: { ...state.order, orderItems: updatedOrder}
                 }
             } else {
-                const orderId = uuidv4()
-                const orderItemId = uuidv4();
                 const { tourId, description, quantity} = action.payload;
                 const newOrderItem = {
-                    id: orderItemId, 
+                    id: uuidv4(),
                     tourId: tourId, 
                     description: description, 
                     quantity: quantity, 
-                    orderId: orderId
+                    orderId: state.order.id || uuidv4()
                 };
                 return {
                     ...state,
                     order: { 
                         ...state.order, 
-                        id: orderId,
+                        id: state.order.id || newOrderItem.orderId,
                         orderItems: [...state.order.orderItems, newOrderItem]}
                 }
             }
