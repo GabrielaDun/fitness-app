@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, IsInt, Min, IsUUID } from 'class-validator';
 
-export class CreateOrderItemDTO {
+export class UpdateOrderItemDTO {
   @IsNotEmpty()
   @IsString()
   description: string;

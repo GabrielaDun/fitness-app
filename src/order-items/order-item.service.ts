@@ -16,7 +16,6 @@ export class OrderItemService {
     });
   }
   public async create(orderItemsData: CreateOrderItemDTO): Promise<OrderItem> {
-    console.log('orderItemsData backend:', orderItemsData);
     try {
       const createdItems = await this.prismaService.orderItem.createMany({
         data: orderItemsData,
@@ -27,5 +26,19 @@ export class OrderItemService {
       console.log(error);
       throw error;
     }
+  }
+  public edit(
+    id: OrderItem['id'],
+    orderItemData: Omit<OrderItem, 'id'>,
+  ): Promise<OrderItem> {
+    return this.prismaService.orderItem.update({
+      where: { id },
+      data: orderItemData,
+    });
+  }
+  public delete(id: OrderItem['id']): Promise<OrderItem | null> {
+    return this.prismaService.orderItem.delete({
+      where: { id },
+    });
   }
 }
