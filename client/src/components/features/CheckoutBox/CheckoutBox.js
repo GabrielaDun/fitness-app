@@ -8,6 +8,7 @@ import { Navigate } from 'react-router-dom';
 const CheckoutBox = ({tourId, quantity}) => {
   const tourData = useSelector(state => getTourById(state, tourId))
 
+  console.log(tourId);
   const orderData = useSelector(state => getOrderByTourId(state, tourId))
   console.log(orderData);
 

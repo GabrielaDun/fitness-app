@@ -27,6 +27,7 @@ const OrderForm = ({totalDownPayment, cartData}) => {
             orderId: item.orderId,
 
         }))
+
         const createOptionsOrder = (data) => ({
             method: 'POST',
             headers: {
@@ -34,8 +35,6 @@ const OrderForm = ({totalDownPayment, cartData}) => {
             },
             body: JSON.stringify(data)
         });
-        const optionsOrder = createOptionsOrder(orderData);
-        //const optionsOrderItems = createOptionsOrder(orderItemsData);
     
         const handleFetch = async (url, options, successMessage) => {
             try {
@@ -54,11 +53,8 @@ const OrderForm = ({totalDownPayment, cartData}) => {
         }
     
         try {
-            // Wait for the first fetch to complete
-            await handleFetch(`${API_URL}/app/orders`, optionsOrder, 'Order success');
-    
-            // Proceed with the second fetch only after the first one completes
-
+            await handleFetch(`${API_URL}/app/orders`, createOptionsOrder(orderData), 'Order success');
+            dispatch(resetCart());
             await Promise.all(orderItemsData.map(item => 
                 handleFetch(`${API_URL}/app/orderItems`, createOptionsOrder(item), 'OrderItem success')
             ));

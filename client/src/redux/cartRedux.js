@@ -34,7 +34,7 @@ export const getAllCartWithTour = state => {
     });
 }
 export const getOrderByTourId = ( state, tourId) => {
-    const orders = state.cart.order.orderItem;
+    const orders = state.cart.order.orderItems;
     if(!orders) return undefined
     return orders.find(o => o.tourId === tourId)
 }
@@ -62,7 +62,7 @@ const CartReducer = (state = initialStateCart, action) => {
         case ADD_TO_CART:
             const existingItem = state.order.orderItems.find(item => item.tourId === action.payload.tourId);
             if (existingItem ) {
-                const {quantity} = action.payload;
+                const { quantity } = action.payload;
                 const updatedOrder = state.order.orderItems.map(item => 
                     item === existingItem
                         ? { ...item, quantity: item.quantity + quantity }
@@ -128,14 +128,26 @@ const CartReducer = (state = initialStateCart, action) => {
             }
         }
         case DELETE_ORDER_ITEM: {
-            const tourIdToDelete = action.payload.tourId;
-            const updatedOrdersItems = state.order.orderItems.filter(item => item.tourId !== tourIdToDelete);
-            return {
-                ...state,
-                order: {
-                    ...state.order,
-                    orderItems: updatedOrdersItems
-                }
+            const { tourId } = action.payload;
+            const updatedOrderItems = state.order.orderItems.filter(item => item.tourId !== tourId);
+        
+            if (state.order.orderItems.length === 1 && state.order.orderItems[0].tourId === tourId) {
+                return {
+                    ...state,
+                    order: {
+                        ...state.order,
+                        id: '', 
+                        orderItems: updatedOrderItems
+                    }
+                };
+            } else {
+                return {
+                    ...state,
+                    order: {
+                        ...state.order,
+                        orderItems: updatedOrderItems
+                    }
+                };
             }
         }
         case RESET_CART: 
