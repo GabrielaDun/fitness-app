@@ -29,10 +29,12 @@ const NavBar = () => {
             <div className={styles.nav}>
                 <li><NavLink className={ ({ isActive }) =>  isActive ? styles.linkActive : undefined}
                     to="/">Home</NavLink></li>
-                <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
-                    to="/cart">Your Cart</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined }
+                    to="/products">Products</NavLink></li>
                 <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
                     to="/about">About</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
+                    to="/cart">Cart</NavLink></li>
             </div>
             <div className={styles.symbols}>
                 <NavLink to="/cart"><i className="fa-solid fa-basket-shopping"></i></NavLink>
@@ -40,8 +42,9 @@ const NavBar = () => {
                 {isNavVisible && (
                     <ul className={styles.dropdownMenu}>
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/cart">Your Cart</NavLink></li>
+                        <li><NavLink to="/products">Products</NavLink></li>
                         <li><NavLink to="/about">About</NavLink></li>
+                        <li><NavLink to="/cart">Cart</NavLink></li>
                     </ul>
                 )}
             </div>

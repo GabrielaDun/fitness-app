@@ -11,6 +11,8 @@ const Footer = () => {
                 <div className={styles.nav}>
                     <li><NavLink className={ ({ isActive }) =>  isActive ? styles.linkActive : undefined}
                         to="/">Home</NavLink></li>
+                    <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined }
+                    to="/products">Products</NavLink></li>
                     <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
                         to="/cart">Your Cart</NavLink></li>
                     <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}

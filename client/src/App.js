@@ -13,6 +13,7 @@ import Footer from './components/layout/Footer/Footer';
 import ThankYou from './components/views/ThankYou/ThankYou';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import About from './components/views/About/About';
+import ProdcutPage from './components/views/ProductPage/ProductPage';
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/checkout" element={ < CheckoutPage /> } /> 
           <Route path="/thank-you" element={ <ThankYou /> } />
           <Route path="/about" element={ <About /> } />
+          <Route path="/products" element={ <ProdcutPage />} />
         </Routes>
         </CSSTransition>
       </TransitionGroup>

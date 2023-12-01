@@ -10,6 +10,7 @@ export const getAllTours = state => state.tours.data;
 export const getTourLoading =  state => state.tours.loading;
 export const getTourByURL = ( { tours }, tourURL) => tours.data.find(tour => tour.url === tourURL)
 export const getTourById = ( { tours }, tourId) => tours.data.find(tour => tour.id === tourId)
+export const getFourTours = state => state.tours.data.slice(0, 4);
 
 // actions
 const createActionName = actionName => `app/tours/${actionName}`;
