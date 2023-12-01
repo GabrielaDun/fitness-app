@@ -4,12 +4,13 @@
 .root {
     .slider {
         background-size: cover;
-        background-position: center center;
+        background-position: center bottom;
         height: 450px;
         width: 100%;
         color: $color-light;
         font-family: $font-header;
-        h2 {
+        
+        h2{
             font-size: 80px;
             position: relative;
             font-weight: 100;

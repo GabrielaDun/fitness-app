@@ -12,6 +12,7 @@ import CheckoutPage from './components/views/Checkout/CheckoutPage';
 import Footer from './components/layout/Footer/Footer';
 import ThankYou from './components/views/ThankYou/ThankYou';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import About from './components/views/About/About';
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/tour/:url" element={< TourPage />} />
           <Route path="/checkout" element={ < CheckoutPage /> } /> 
           <Route path="/thank-you" element={ <ThankYou /> } />
+          <Route path="/about" element={ <About /> } />
         </Routes>
         </CSSTransition>
       </TransitionGroup>

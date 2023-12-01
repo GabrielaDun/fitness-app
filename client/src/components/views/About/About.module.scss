@@ -1,0 +1,61 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.root {
+    .slider {
+        background-size: cover;
+        background-position: center center;
+        height: 450px;
+        width: 100%;
+        color: $color-light;
+        font-family: $font-header;
+        margin-bottom: 30px;
+        
+        h2{
+            font-size: 80px;
+            position: relative;
+            font-weight: 100;
+            left: 15%;
+            top: 10%;
+            width: 300px;
+            @include respond-to (big-tablet) {
+                font-size: 50px;
+            }
+        }
+    }
+    .storySection {
+        margin: 50px 150px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        @include respond-to (small-tablet) {
+            margin: 10px;
+            flex-direction: column;
+        }
+
+        .text {
+            width: 60%;
+            font-size: 18px;
+
+            h2 {
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin-bottom: 15px;
+            }
+        }
+
+        .storyImage {
+                width: 50%;
+                margin-left: 20px;
+                align-self: flex-start;
+            @include respond-to (small-tablet) {
+                align-items: center;
+                width: 90%;
+            }
+        }
+    }
+}
