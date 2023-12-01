@@ -7,12 +7,18 @@ import { useEffect, useState } from 'react';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 import OrderForm from '../../features/OrderForm/OrderForm';
 import PageSlider from '../../common/PageSlider/PageSlider';
+import Button from '../../common/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutPage = () => {
 
-    const cartData = useSelector(getAllCart)
-    console.log(cartData);
+    const cartData = useSelector(getAllCart);
 
+    const navigate = useNavigate();
+    const goToProducts = () => {
+        navigate('/products')
+        window.scrollTo(0, 0);
+    }
 
     const [totalPrice, setTotalPrice] = useState(0);
     const cartDetailedData = useSelector(getAllCartWithTour)
@@ -45,7 +51,11 @@ const CheckoutPage = () => {
             )}
             {cartData.length === 0 && (
                 <div className={styles.empty}>
-                    <h2>Your cart is empty. You have nothing to checkout</h2>
+                    <h1>Your cart is empty. You have nothing to checkout</h1>
+                    <p>See our amazing tours:</p>
+                    <div className={styles.moreTours}>
+                        <Button colorType="secondary" onClick={goToProducts}>See more tours!</Button>
+                    </div>
                 </div>
             )}
             <div className={styles.grid}>

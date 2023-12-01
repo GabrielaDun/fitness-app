@@ -4,8 +4,14 @@ import PageTitle from '../../common/PageTitle/PageTitle';
 import styles from './Offer.module.scss'
 import { getFourTours } from '../../../redux/toursRedux';
 import TripBox from '../../features/TripBox/TripBox';
+import { useNavigate } from 'react-router-dom';
 
 const Offer = () => {
+    const navigate = useNavigate();
+    const goToProducts = () => {
+        navigate('/products')
+        window.scrollTo(0, 0);
+    }
     const trips = useSelector(getFourTours);
     return (
         <div className={styles.root}>
@@ -18,7 +24,7 @@ const Offer = () => {
             ))}
         </div>
             <div className={styles.moreTours}>
-                < Button>See more tours</Button>
+                <Button colorType="secondary" onClick={goToProducts}>See more tours!</Button>
             </div>
         </div>
     );

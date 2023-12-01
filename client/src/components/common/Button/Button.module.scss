@@ -30,3 +30,10 @@
     }
 
 }
+.secondary {
+    @extend .button;
+    background: $color-secondary;
+    &:hover {
+        background: darken($color-secondary, 10%);
+    }
+}

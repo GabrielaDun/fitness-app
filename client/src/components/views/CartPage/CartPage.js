@@ -22,6 +22,11 @@ const CartPage = () => {
         navigate('/checkout');
         window.scrollTo(0, 0);
     };
+
+    const goToProducts = () => {
+        navigate('/products')
+        window.scrollTo(0, 0);
+    }
     
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -54,7 +59,11 @@ const CartPage = () => {
             )}
             {cartData.length === 0 && (
                 <div className={styles.empty}>
-                    <h2>Your cart is empty</h2>
+                    <h1>Your cart is empty</h1>
+                    <p>Check out our amazing tours:</p>
+                    <div className={styles.moreTours}>
+                        <Button colorType="secondary" onClick={goToProducts}>See more tours!</Button>
+                    </div>
                 </div>
             )}
             <div className={styles.grid}>

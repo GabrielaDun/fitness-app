@@ -140,7 +140,7 @@ const OrderForm = ({totalDownPayment, cartData}) => {
             </div>
             <div className={styles.buttons} >
                 <div className={styles.button}>
-                    <Button onClick={goToCart}>
+                    <Button colorType="secondary" onClick={goToCart}>
                         <i className="fa-solid fa-arrow-left"></i>
                         Go back to cart
                     </Button>
