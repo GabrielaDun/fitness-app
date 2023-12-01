@@ -8,24 +8,20 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 import { useEffect, useState } from 'react';
 import { getTourLoading } from '../../../redux/toursRedux';
+import PageSlider from '../../common/PageSlider/PageSlider';
 
 const CartPage = () => {
     const navigate = useNavigate();
 
     const cartData = useSelector(getAllCart)
-    console.log(cartData);
-    const slideImage = `${process.env.PUBLIC_URL}/photos/headers/cart.jpg`;
-
     const cartDetailedData = useSelector(getAllCartWithTour)
-    console.log(cartDetailedData);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const loading = useSelector(getTourLoading);
 
     const goToCheckout = () => {
         navigate('/checkout');
         window.scrollTo(0, 0);
     };
-
-    const [totalPrice, setTotalPrice] = useState(0);
-
     
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -39,16 +35,12 @@ const CartPage = () => {
         return () => clearTimeout(timer); 
     }, [cartDetailedData]);
 
-    const loading = useSelector(getTourLoading);
-
     if (loading) return <div>Loading...</div>;
 
     if(!cartData) return <Navigate to="/" />
     else return (
         <div className={styles.root}>
-            <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
-                <h2>Cart</h2>
-            </div>
+            < PageSlider imageName={'cart'} text='Cart' />
             {cartData.length > 0 && (
             <div className={styles.cart}>
                 <div className={styles.categories}>

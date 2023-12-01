@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './ThankYou.module.scss';
+import PageSlider from '../../common/PageSlider/PageSlider';
 
 const ThankYou = () => {
-    const slideImage = `${process.env.PUBLIC_URL}/photos/headers/thank-you.jpg`;
     return (
         <div className={styles.root}>
-            <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
-                <h2>Your booking was succcesful!</h2>
-            </div>
+            < PageSlider imageName={'thank-you'} text='Your booking was successful!' />
             <div className={styles.empty}>
                 <p>We will send you the payment methods shortly.</p>
             </div>

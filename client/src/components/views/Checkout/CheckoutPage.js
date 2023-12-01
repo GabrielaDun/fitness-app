@@ -6,12 +6,12 @@ import CheckoutBox from '../../features/CheckoutBox/CheckoutBox';
 import { useEffect, useState } from 'react';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 import OrderForm from '../../features/OrderForm/OrderForm';
+import PageSlider from '../../common/PageSlider/PageSlider';
 
 const CheckoutPage = () => {
 
     const cartData = useSelector(getAllCart)
     console.log(cartData);
-    const slideImage = `${process.env.PUBLIC_URL}/photos/headers/checkout.jpg`;
 
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -31,9 +31,7 @@ const CheckoutPage = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
-                <h2>Checkout</h2>
-            </div>
+            < PageSlider imageName={'checkout'} text='Checkout' />
             {cartData.length > 0 && (
             <div className={styles.cart}>
                 <div className={styles.categories}>

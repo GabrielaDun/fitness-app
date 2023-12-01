@@ -13,6 +13,7 @@ export const initialStateCart = {
         country: '',
     },
     loading: true,
+    
 };
 
 // selectors

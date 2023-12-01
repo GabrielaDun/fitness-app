@@ -1,14 +1,11 @@
 import React from 'react';
 import styles from './About.module.scss';
-
-const slideImage = `${process.env.PUBLIC_URL}/photos/about/main.webp`;
+import PageSlider from '../../common/PageSlider/PageSlider';
 
 const About = () => {
     return (
         <div className={styles.root}>
-            <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
-                <h2>Our story</h2>
-            </div>
+            < PageSlider imageName={'about'} text='Our Story' />
             <div className={styles.storySection}>
                 <div className={styles.text}>
                     <h2>NaturEscape: A Journey into Nature's Heart</h2>
@@ -22,7 +19,7 @@ const About = () => {
                     <p>Their paths intertwined in the rugged beauty of the Patagonian landscape. Under the southern stars, they dreamt of connecting people to the earth's wonders. NaturEscape was born from this dream – a testament to their love for nature and an invitation for like-minded adventurers to explore the world responsibly.</p>
                     <p>NaturEscape crafts journeys that transcend traditional travel. Each trip is an odyssey into the heart of nature, offering an intimate encounter with the world's most awe-inspiring destinations. From the serene fjords of Norway to the vibrant coral reefs of the Great Barrier Reef, every expedition is a step into a storybook of natural wonder.</p>
                 </div>
-                <img src={`${process.env.PUBLIC_URL}/photos/about/2.webp`} alt="nature" className={styles.storyImage} />
+                <img src={`${process.env.PUBLIC_URL}/photos/about/1.webp`} alt="nature" className={styles.storyImage} />
             </div>
 
             <div className={styles.storySection}>

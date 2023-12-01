@@ -1,0 +1,27 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.root {
+    .slider {
+        background-size: cover;
+        background-position: center center;
+        height: 350px;
+        width: 100%;
+        color: $color-light;
+        font-family: $font-header;
+        margin-bottom: 30px;
+        
+        h2{
+            font-size: 72px;
+            position: relative;
+            font-weight: 100;
+            line-height: 75px;
+            left: 15%;
+            top: 10%;
+            width: 350px;
+            @include respond-to (big-tablet) {
+                font-size: 50px;
+            }
+        }
+    }
+}

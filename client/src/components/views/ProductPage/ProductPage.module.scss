@@ -1,0 +1,12 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+.root {
+    .slider {
+        background-size: cover;
+        background-position: center center;
+        height: 450px;
+        width: 100%;
+        color: $color-light
+    }
+}
