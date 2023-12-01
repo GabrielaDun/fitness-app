@@ -1,12 +1,19 @@
+@import '../../../styles/settings.scss';
 .root {
-    margin: 20px;
-    
+    margin: 30px 20px;
+    padding: 20px 0;
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid $color-gray; 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
     .image {
         object-fit: cover;
         left: 0;
-        max-width: 220px;
-        height: 150px;
+        width: 300px;
+        max-height: 200px;
         margin: 20px 0;
     }
     

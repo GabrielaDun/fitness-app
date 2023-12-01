@@ -10,17 +10,12 @@ import { useState } from 'react';
 
 const TourPage = () => {
      const { url } = useParams();
-
     const loading = useSelector(getTourLoading);
-
     const tourData = useSelector(state => getTourByURL(state, url))
-    console.log(tourData);
-
     const [quantity, setQuantity] = useState(1);
 
     const dispatch = useDispatch();
     const handleAddToCart = () => {
-
         dispatch(addToCart({
             tourId: tourData.id, 
             description: '', 
