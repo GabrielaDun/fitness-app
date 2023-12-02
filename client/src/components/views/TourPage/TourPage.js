@@ -27,7 +27,13 @@ const TourPage = () => {
     const otherImageBase =`${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/`;
 
     if(!tourData) return <Navigate to="/" />
-    else return (
+    const images = [];
+    for (let i = 1; i <= 6; i++) {
+        images.push(
+            <img key={i} className={styles.image} alt={`Tour ${i}`} src={`${otherImageBase}${i}.jpg`} />
+        );
+    }
+    return (
         <div className={styles.root}>
             <div className={styles.slider} style={{backgroundImage: `url(${slideImage})`}}>
                 <h2>{tourData.title}</h2>
@@ -36,16 +42,12 @@ const TourPage = () => {
                 <div className={styles.main}>
                     <div className={styles.title}>{tourData.title}</div>
                     <div className={styles.description}>{tourData.longDescription}</div>
+                    <div className={styles.title}>Duration: {tourData.tourDurationDays} days</div>
                     <div className={styles.icones}> </div>
                     <div className={styles.title}>Price: ${tourData.price}</div>
                     <div className={styles.title}>More photos:</div>
                     <div className={styles.photos}>
-                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}1.jpg`} />
-                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}2.jpg`} />
-                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}3.jpg`} />
-                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}4.jpg`} />
-                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}5.jpg`} />
-                    <img className={styles.image} alt={tourData.text} src={`${otherImageBase}6.jpg`} />
+                        {images}
                     </div>
                 </div>
                 <div className={styles.booking}>

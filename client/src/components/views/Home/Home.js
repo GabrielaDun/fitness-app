@@ -1,8 +1,7 @@
 //import Categories from '../Categories/Categories';
-//import FollowUs from '../FollowUs/FollowUs';
 // import Map from '../Map/Map';
+import Quote from '../../features/Quote/Quote';
 import Offer from '../Offer/Offer';
-import Quote from '../Quote/Quote';
 import SliderAndSearch from '../SliderAndSearch/SliderAndSearch';
 //import styles from './Home.module.scss'
 
