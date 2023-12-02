@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './TourPage.module.scss'
 import { getTourByURL, getTourLoading } from '../../../redux/toursRedux';
@@ -13,6 +13,10 @@ const TourPage = () => {
     const loading = useSelector(getTourLoading);
     const tourData = useSelector(state => getTourByURL(state, url))
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate()
+
+    const [itemAdded, setItemAdded] = useState(false);
+    const [showAddedToCartText, setShowAddedToCartText] = useState(false);
 
     const dispatch = useDispatch();
     const handleAddToCart = () => {
@@ -20,6 +24,16 @@ const TourPage = () => {
             tourId: tourData.id, 
             description: '', 
             quantity: quantity}))
+        setItemAdded(true);
+        setShowAddedToCartText(true);
+    }
+    setTimeout(() => {
+        setShowAddedToCartText(false);
+    }, 4000);
+
+    const goToCart = () => {
+        navigate('/cart')
+        window.scrollTo(0,0);
     }
 
     if (loading) return <div>Loading...</div>;
@@ -54,6 +68,12 @@ const TourPage = () => {
                     <div className={styles.title}>BOOK THIS TOUR</div>
                     <div className={styles.downPayment}>Down Payment Only: $300</div>
                     <AmountWidget tourId={tourData.id} quantity={quantity} setQuantity={setQuantity} immediateUpdate={false} />
+                    {itemAdded && (
+                        <div className={styles.cartNotification}>
+                        {showAddedToCartText && <p>Order was just added to cart</p>}
+                        <Button colorType="secondary" onClick={goToCart}>Go to cart</Button>
+                    </div>
+                    )}
                     <Button onClick={() => handleAddToCart()}>Add to cart</ Button>
                 </div>
 
