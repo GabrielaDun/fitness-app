@@ -95,6 +95,20 @@
             @include respond-to(small-tablet) {
                 font-size: 24px;
             }
+            .itemCount {
+                position: absolute;
+                top: 45px; 
+                right: 65px; 
+                background-color: $color-main; 
+                color: $color-light;
+                border-radius: 50%;
+                min-width: 20px;
+                height: 20px;
+                font-size: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
             i {
                 padding: 10px 15px;
                 .linkActive {

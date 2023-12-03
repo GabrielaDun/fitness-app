@@ -39,6 +39,8 @@ export const getOrderByTourId = ( state, tourId) => {
     return orders.find(o => o.tourId === tourId)
 }
 
+export const getTotalCartItems = state => 
+    state.cart.order.orderItems.reduce((total, orderItem) => total + orderItem.quantity, 0)
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styles from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getTotalCartItems } from '../../../redux/cartRedux';
 
 const NavBar = () => {
 
@@ -9,6 +11,8 @@ const NavBar = () => {
     const toggleNav = () => {
         setIsNavVisible(!isNavVisible)
     }
+    const itemCount = useSelector(getTotalCartItems);
+    console.log(itemCount);
 
     return (
     <div className={styles.container}>
@@ -33,11 +37,15 @@ const NavBar = () => {
                     to="/products">Products</NavLink></li>
                 <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
                     to="/about">About</NavLink></li>
-                <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
+                <li>
+                    <NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined}
                     to="/cart">Cart</NavLink></li>
             </div>
             <div className={styles.symbols}>
-                <NavLink to="/cart"><i className="fa-solid fa-basket-shopping"></i></NavLink>
+                <NavLink to="/cart">
+                    <i className="fa-solid fa-basket-shopping"></i>
+                    {itemCount > 0 && <span className={styles.itemCount}>{itemCount}</span>}
+                </NavLink>
                 <i className={`fa-solid fa-bars ${styles.navIcon}`} onClick={toggleNav}></i>
                 {isNavVisible && (
                     <ul className={styles.dropdownMenu}>
