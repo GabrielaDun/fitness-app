@@ -12,7 +12,6 @@ const NavBar = () => {
         setIsNavVisible(!isNavVisible)
     }
     const itemCount = useSelector(getTotalCartItems);
-    console.log(itemCount);
 
     return (
     <div className={styles.container}>

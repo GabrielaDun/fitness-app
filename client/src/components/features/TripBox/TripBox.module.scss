@@ -1,24 +1,70 @@
 @import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
 .root {
-    margin: 30px 20px;
-    padding: 20px 0;
+    position: relative;
+    padding-bottom: 20px;
     width: 300px;
     box-sizing: border-box;
-    border: 1px solid $color-gray; 
-    align-items: center;
     display: flex;
     flex-direction: column;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $color-main;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-family: $font-body;
+        font-weight: 300;
+    }
+    p {
+        font-size: 16px;
+        line-height: 24px;
+    }
 
     .image {
         object-fit: cover;
         left: 0;
-        width: 300px;
-        max-height: 200px;
+        width: 100%;
+        max-height: 180px;
         margin: 20px 0;
     }
-    
     .button {
-        text-decoration: none;
-        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease; 
+        z-index: 2; 
+        @include respond-to(small-tablet) {
+            position: static;
+            transform: none;
+            opacity: 1;
+            margin: 10px 0; 
+        }
+    }
+    &:hover {
+        &:before {
+            opacity: 0.3;
+        }
+
+        h2, p, .image {
+            opacity: 0.5;
+        }
+
+        .button {
+            opacity: 1;
+            
+        }
     }
 }

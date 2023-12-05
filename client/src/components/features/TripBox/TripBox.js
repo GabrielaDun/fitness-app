@@ -2,6 +2,7 @@ import Button from '../../common/Button/Button';
 import styles from "./TripBox.module.scss"
 import { capitalizeCategory } from '../../../utils/CapitalLetter';
 import { useNavigate } from 'react-router-dom';
+import { shortenString } from '../../../utils/ShortenString';
 
 
 const TripBox = (props) => {
@@ -12,19 +13,19 @@ const TripBox = (props) => {
         window.scrollTo(0, 0);
     }
 
-    console.log(props);
     const image = `${process.env.PUBLIC_URL}/photos/tours/${props.url}/main.jpg`;
     const category = capitalizeCategory(props.category.category);
+    const description = shortenString(props.longDescription, 90)
     
     return (
         <div className={styles.root}>
-            <h2>{props.title}</h2>
             <img
                 className={styles.image}
                 alt={props.text}
                 src={image} />
-            <p><b>Price: $</b>{props.price}</p>
-            <p><b>Category: </b>{category}</p>
+            <h2>{props.title}</h2>
+            <p><b>Price: $</b>{props.price} /<b> Category: </b>{category}</p>
+            <p>{description}</p>
             <div className={styles.button} onClick={goToTour} ><Button>Read more</Button></div>
         </div>
     )

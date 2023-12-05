@@ -2,15 +2,10 @@ import { useSelector } from 'react-redux';
 import { getTourById, getTourLoading } from '../../../redux/toursRedux';
 import styles from './CheckoutBox.module.scss';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
-import { getOrderByTourId } from '../../../redux/cartRedux';
 import { Navigate } from 'react-router-dom';
 
 const CheckoutBox = ({tourId, quantity}) => {
   const tourData = useSelector(state => getTourById(state, tourId))
-
-  console.log(tourId);
-  const orderData = useSelector(state => getOrderByTourId(state, tourId))
-  console.log(orderData);
 
   const loading = useSelector(getTourLoading);
   

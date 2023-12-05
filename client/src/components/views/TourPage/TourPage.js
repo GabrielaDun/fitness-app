@@ -29,7 +29,7 @@ const TourPage = () => {
     }
     setTimeout(() => {
         setShowAddedToCartText(false);
-    }, 4000);
+    }, 6000);
 
     const goToCart = () => {
         navigate('/cart')
