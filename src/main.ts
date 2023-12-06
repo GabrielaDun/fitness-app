@@ -8,6 +8,6 @@ async function bootstrap() {
   app.setGlobalPrefix('app');
   app.enableCors();
   await app.enableShutdownHooks();
-  await app.listen(8000);
+  await app.listen(8000, '0.0.0.0');
 }
 bootstrap();
