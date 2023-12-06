@@ -14,6 +14,8 @@ import { TagsModule } from './tags/tags.module';
 import { OrderItemModule } from './order-items/order-item.module';
 import { OrdersModule } from './orders/orders.module';
 import { ClientsModule } from './clients/clients.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -24,6 +26,9 @@ import { ClientsModule } from './clients/clients.module';
     OrderItemModule,
     OrdersModule,
     ClientsModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../', 'client', 'build'),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
