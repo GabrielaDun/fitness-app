@@ -53,10 +53,10 @@ const OrderForm = ({totalDownPayment, cartData}) => {
         }
     
         try {
-            await handleFetch(`${API_URL}/app/orders`, createOptionsOrder(orderData), 'Order success');
+            await handleFetch(`${API_URL}/orders`, createOptionsOrder(orderData), 'Order success');
             dispatch(resetCart());
             await Promise.all(orderItemsData.map(item => 
-                handleFetch(`${API_URL}/app/orderItems`, createOptionsOrder(item), 'OrderItem success')
+                handleFetch(`${API_URL}/orderItems`, createOptionsOrder(item), 'OrderItem success')
             ));
     
             navigate('/thank-you');

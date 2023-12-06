@@ -20,7 +20,7 @@ const UPDATE_TOURS = createActionName('UPDATE_TOURS')
 export const updateTours = payload => ({type: UPDATE_TOURS, payload});
 
 export const fetchTours = (dispatch) => {
-    fetch(`${API_URL}/app/tours`)
+    fetch(`${API_URL}/tours`)
     .then(res => res.json())
     .then(tours => dispatch(updateTours(tours))) 
   };
