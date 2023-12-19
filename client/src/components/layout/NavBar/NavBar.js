@@ -27,7 +27,9 @@ const NavBar = () => {
         </div>
         <div className={styles.main}>
             <div className={styles.logo}>
+                <NavLink to="/">
                 NaturEscape
+                </NavLink>
             </div>
             <div className={styles.nav}>
                 <li><NavLink className={ ({ isActive }) =>  isActive ? styles.linkActive : undefined}

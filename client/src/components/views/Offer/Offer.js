@@ -24,7 +24,7 @@ const Offer = () => {
             ))}
         </div>
             <div className={styles.moreTours}>
-                <Button colorType="secondary" onClick={goToProducts}>See more tours!</Button>
+                <Button className={styles.btn} colorType="secondary" onClick={goToProducts}>See more tours!</Button>
             </div>
         </div>
     );

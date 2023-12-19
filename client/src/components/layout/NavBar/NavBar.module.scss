@@ -66,6 +66,9 @@
             @include respond-to(small-tablet) {
                 font-size: 32px;
             }
+            a {
+                text-decoration: none;
+            }
         }
         .nav {
             display: flex;

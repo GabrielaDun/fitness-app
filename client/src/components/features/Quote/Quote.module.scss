@@ -16,7 +16,8 @@
         width: 400px;
         font-family: $font-hand;
             @include respond-to(big-tablet) {
-                font-size: 60px;
+                font-size: 48px;
+                width: 320px;
             }
     }
     h3 {
