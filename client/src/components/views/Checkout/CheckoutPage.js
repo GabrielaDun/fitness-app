@@ -37,7 +37,7 @@ const CheckoutPage = () => {
 
     return (
         <div className={styles.root}>
-            < PageSlider imageName={'checkout'} text='Checkout' />
+            <PageSlider imageName={'checkout'} text='Checkout' />
             {cartData.length > 0 && (
             <div className={styles.cart}>
                 <div className={styles.categories}>
@@ -73,7 +73,7 @@ const CheckoutPage = () => {
                     <div className={styles.price}>${totalPrice}</div>
                 </div>
                 <div className={styles.orderForm}>
-                    < OrderForm cartData={cartData} totalDownPayment={totalPrice} />
+                    <OrderForm cartData={cartData} totalDownPayment={totalPrice} />
                 </div>
                 <div className={styles.buttonSpace}>
                 </div>

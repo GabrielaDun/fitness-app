@@ -45,7 +45,7 @@ const CartPage = () => {
     if(!cartData) return <Navigate to="/" />
     else return (
         <div className={styles.root}>
-            < PageSlider imageName={'cart'} text='Cart' />
+            <PageSlider imageName={'cart'} text='Cart' />
             {cartData.length > 0 && (
             <div className={styles.cart}>
                 <div className={styles.categories}>

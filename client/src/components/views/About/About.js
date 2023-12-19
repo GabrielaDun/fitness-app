@@ -5,7 +5,7 @@ import PageSlider from '../../common/PageSlider/PageSlider';
 const About = () => {
     return (
         <div className={styles.root}>
-            < PageSlider imageName={'about'} text='Our Story' />
+            <PageSlider imageName={'about'} text='Our Story' />
             <div className={styles.storySection}>
                 <div className={styles.text}>
                     <h2>NaturEscape: A Journey into Nature's Heart</h2>

@@ -7,9 +7,9 @@ const Home = () => {
 
     return (
         <div>
-            < SliderAndSearch />
-            < Offer />
-            < Quote title={'Enjoy the wildness'} subtitle={'MONTIANS'} image={imageUrlOne} />
+            <SliderAndSearch />
+            <Offer />
+            <Quote title={'Enjoy the wildness'} subtitle={'MONTIANS'} image={imageUrlOne} />
         </div>
     );
 };
