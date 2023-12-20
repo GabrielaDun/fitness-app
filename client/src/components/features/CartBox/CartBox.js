@@ -2,17 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTourById, getTourLoading } from '../../../redux/toursRedux';
 import AmountWidget from '../AmountWidget/AmountWidget';
 import styles from './CartBox.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
-import { addDesciption, deleteOrderItem } from '../../../redux/cartRedux';
+import { addDesciption, deleteOrderItem, getOrderItemDescription } from '../../../redux/cartRedux';
 import { Navigate } from 'react-router-dom';
 
-const CartBox = ({tourId, quantity}) => {
+const CartBox = ({tourId, quantity, id}) => {
   const dispatch = useDispatch()
   const tourData = useSelector(state => getTourById(state, tourId))
 
+  const orderDescription = useSelector(state => getOrderItemDescription(state, id))
+  console.log(orderDescription);
+
   const [amount, setAmount] = useState(quantity);
   const [description, setDescription] = useState('')
+
+  useEffect(() => {
+    setDescription(orderDescription || '');
+  }, [orderDescription]);
 
   const handleDeleteTour = (event) => {
     console.log(tourId);
@@ -22,10 +29,11 @@ const CartBox = ({tourId, quantity}) => {
   }
 
   const handleDescription = (event) => {
-    setDescription(event.target.value)
+    const newDescription = event.target.value
+    setDescription(newDescription)
     dispatch(addDesciption({
       tourId: tourId,
-      description: description
+      description: newDescription
     }))
   }
 
