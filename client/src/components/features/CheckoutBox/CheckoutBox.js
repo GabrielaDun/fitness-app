@@ -19,14 +19,12 @@ const CheckoutBox = ({tourId, quantity}) => {
         <div className={styles.root}>
         <div className={styles.main}>
             <div className={styles.product}>
-            <div className={styles.x}>
-            </div>
-            <img 
-                className={styles.image}
-                alt={tourData.title}
-                src={image}
-            />
-            <div className={styles.title}>{tourData.title}</div>
+              <img 
+                  className={styles.image}
+                  alt={tourData.title}
+                  src={image}
+              />
+              <div className={styles.title}>{tourData.title}</div>
             </div>
             <div className={styles.price} ><p>${tourData.price}</p></div>
             <div className={styles.downPayment}><p>${downPayment}</p></div>

@@ -15,12 +15,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @include respond-to (small-tablet) {
+                flex: 3;
+            }
         }
         .price {
             flex: 1;
+            
         }
         .downPayment {
             flex: 1;
+            @include respond-to (small-tablet) {
+                padding-left: 10px;
+            }
         }
         .amount {
             flex: 3;

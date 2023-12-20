@@ -3,13 +3,13 @@
 
 .widgetContainer {
     display: flex;
-    max-width: 170px;
+    max-width: 150px;
     align-items: center;
     margin: 10px 0;
     border: 1px solid $color-addition;
     
     .quantityInput {
-      width: 50px;
+      width: 30px;
       text-align: center;
       margin: 0 10px;
       border: none;
