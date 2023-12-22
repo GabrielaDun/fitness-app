@@ -7,6 +7,7 @@ import Button from '../../common/Button/Button';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 import { addToCart } from '../../../redux/cartRedux';
 import { useState } from 'react';
+import { CalculeteDownPayment } from '../../../utils/CalculeteDownPayment';
 
 const TourPage = () => {
      const { url } = useParams();
@@ -40,6 +41,8 @@ const TourPage = () => {
     const slideImage = `${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/main.jpg`;
     const otherImageBase =`${process.env.PUBLIC_URL}/photos/tours/${tourData.url}/`;
 
+    const downPayment = CalculeteDownPayment(tourData.price);
+
     if(!tourData) return <Navigate to="/" />
     const images = [];
     for (let i = 1; i <= 6; i++) {
@@ -66,7 +69,7 @@ const TourPage = () => {
                 </div>
                 <div className={styles.booking}>
                     <div className={styles.title}>BOOK THIS TOUR</div>
-                    <div className={styles.downPayment}>Down Payment Only: $300</div>
+                    <div className={styles.downPayment}>Down Payment Only: ${downPayment}</div>
                     <AmountWidget tourId={tourData.id} quantity={quantity} setQuantity={setQuantity} immediateUpdate={false} />
                     {itemAdded && (
                         <div className={styles.cartNotification}>
