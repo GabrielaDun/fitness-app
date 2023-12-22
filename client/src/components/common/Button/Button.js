@@ -1,7 +1,14 @@
 import styles from './Button.module.scss'
 
 const Button = ({ onClick, children, colorType}) => {
-    const buttonClass = colorType === 'secondary' ? styles.secondary : styles.button;
+
+    let buttonClass = styles.button
+    if (colorType === 'secondary') {
+        buttonClass = styles.secondary;
+    } else if (colorType === 'tertiary') {
+        buttonClass = styles.tertiary
+    } 
+
 
     return (
     <div className={styles.root}>

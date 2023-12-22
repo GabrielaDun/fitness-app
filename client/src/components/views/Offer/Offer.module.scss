@@ -2,31 +2,46 @@
 @import '../../../styles/media-queries.scss';
 
 .root {
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px; 
-        margin: 40px;
-        align-items: center;
-      
-        &Item {
-          flex: 1; 
-          display: flex;
-          justify-content: center;
-      
-          @include respond-to (big-tablet) { 
-            flex: 3;
-          }
-      
-        }
+  .categories {
+    display: flex;
+    justify-content: center;
+    @include respond-to (big-tablet) {
+      flex-direction: column;
+    }
+    .subCategories {
+      display: flex;
+      justify-content: center;
+      .button {
+        padding: 5px;
       }
-    .moreTours {
+    }
+  }
+
+  .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; 
+      margin: 40px;
+      align-items: center;
+    
+      &Item {
+        flex: 1; 
         display: flex;
         justify-content: center;
-        align-items: center;
-        margin-bottom: 25px;
-        .btn {
-          background-color: red;
+    
+        @include respond-to (big-tablet) { 
+          flex: 3;
         }
+    
+      }
     }
+  .moreTours {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 25px;
+      .btn {
+        background-color: red;
+      }
+  }
 }

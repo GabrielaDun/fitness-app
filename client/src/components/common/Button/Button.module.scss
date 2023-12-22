@@ -44,4 +44,19 @@
             background: darken($color-secondary, 10%);
         }
     }
+    .tertiary {
+        @extend .button;
+        width: 150px;
+        font-size: 14px;
+        background-color: $color-beige;
+        color: $color-dark;
+        border-radius: 0;
+        text-transform: none;
+        margin: 10px;
+        
+        &:hover {
+            background: $color-main;
+            color: $color-light;
+        }
+    }
 }

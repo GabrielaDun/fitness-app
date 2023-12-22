@@ -9,6 +9,10 @@
     flex-direction: column;
     height: 500px;
 
+    @include respond-to(small-tablet) {
+        height: 570px;
+    }
+
     &:before {
         content: '';
         position: absolute;

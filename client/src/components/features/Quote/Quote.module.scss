@@ -28,6 +28,7 @@
         width: 200px;
             @include respond-to(big-tablet) {
                 font-size: 18px;
+                width: 150px;
             }
     }
 }

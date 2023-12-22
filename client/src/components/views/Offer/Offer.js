@@ -16,6 +16,29 @@ const Offer = () => {
     return (
         <div className={styles.root}>
             <PageTitle>BEST OFFERS THIS MONTH</PageTitle>
+            <div className={styles.categories}>
+            <div className={styles.subCategories}>
+                    <div className={styles.button}>
+                        <Button colorType='tertiary'>Everything</Button>
+                    </div>
+                </div>
+                <div className={styles.subCategories}>
+                    <div className={styles.button}>
+                        <Button colorType='tertiary'>Weekend</Button>
+                    </div>
+                    <div className={styles.button}>
+                        <Button colorType='tertiary'>Sightseeing</Button>
+                    </div>
+                </div>
+                <div className={styles.subCategories}>
+                    <div className={styles.button}>
+                        <Button colorType='tertiary'>Cycling</Button>
+                    </div>
+                    <div className={styles.button}>
+                        <Button colorType='tertiary'>Hiking</Button>
+                    </div>
+                </div>
+            </div>
             <div className={styles.grid}>
             {trips.map(trip => (
                 <div key={trip.id} className={styles.gridItem}>
