@@ -2,25 +2,11 @@
 @import '../../../styles/media-queries.scss';
 
 .root {
-  .categories {
-    display: flex;
-    justify-content: center;
-    @include respond-to (big-tablet) {
-      flex-direction: column;
-    }
-    .subCategories {
-      display: flex;
-      justify-content: center;
-      .button {
-        padding: 5px;
-      }
-    }
-  }
 
   .grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px; 
+      gap: 10px; 
       margin: 40px;
       align-items: center;
     

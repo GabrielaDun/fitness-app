@@ -1,0 +1,20 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/media-queries.scss';
+
+
+.root {
+    .categories {
+        display: flex;
+        justify-content: center;
+        @include respond-to (big-tablet) {
+          flex-direction: column;
+        }
+        .subCategories {
+          display: flex;
+          justify-content: center;
+          .button {
+            padding: 5px;
+          }
+        }
+      }
+}
