@@ -14,12 +14,14 @@ import ThankYou from './components/views/ThankYou/ThankYou';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import About from './components/views/About/About';
 import ProdcutPage from './components/views/ProductPage/ProductPage';
+import { fetchCategories } from './redux/categoryRedux';
 
 
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   useEffect(() => fetchTours(dispatch), [dispatch]);
+  useEffect(() => fetchCategories(dispatch), [dispatch]);
 
   return (
     <main>  

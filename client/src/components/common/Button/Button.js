@@ -1,6 +1,6 @@
 import styles from './Button.module.scss'
 
-const Button = ({ onClick, children, colorType}) => {
+const Button = ({ onClick, children, colorType, isActive}) => {
 
     let buttonClass = styles.button
     if (colorType === 'secondary') {

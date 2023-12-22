@@ -3,18 +3,17 @@
 
 
 .root {
+    display: flex;
+    justify-content: center;
     .categories {
         display: flex;
         justify-content: center;
-        @include respond-to (big-tablet) {
-          flex-direction: column;
-        }
-        .subCategories {
-          display: flex;
-          justify-content: center;
+        flex-direction: row;
+        @include respond-to (small-tablet) {
+            flex-direction: column;
+          }
           .button {
             padding: 5px;
           }
-        }
-      }
+    }
 }

@@ -53,6 +53,9 @@
         border-radius: 0;
         text-transform: none;
         margin: 10px;
+        @include respond-to (small-tablet) {
+            width: 350px;
+        }
         
         &:hover {
             background: $color-main;
