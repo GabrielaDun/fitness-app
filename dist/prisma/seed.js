@@ -16,10 +16,6 @@ function getCategory() {
             id: 'fd105551-0f0d-4a9f-bc41-c559c8a17258',
             category: 'hike',
         },
-        {
-            id: 'ad105551-0f0d-4a9f-bc41-c559c8a17258',
-            category: 'weekend',
-        },
     ];
 }
 function getTag() {
