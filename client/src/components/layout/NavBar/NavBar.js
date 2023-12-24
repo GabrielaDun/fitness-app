@@ -17,7 +17,7 @@ const NavBar = () => {
     <div className={styles.container}>
         <div className={styles.info}>
             <div className={styles.left}>
-                <p>© 2023 NaturEscape, All Rights Reserved</p>
+                <p>© 2023 Gabriela Dunowska, All Rights Reserved</p>
             </div>
             <div className={styles.right}>
                 <p>Ready for a unique tour?</p>
