@@ -9,7 +9,7 @@ export const initialStateCategories = {
 // selectors
 export const getAllCategories = state => state.categories.data;
 export const getCategoryById = ( { categories }, categoryId) => categories.data.find(category => category.id === categoryId)
-
+export const getCurrectFilter = state => state.categories.filter;
 
 // actions
 const createActionName = actionName => `app/categories/${actionName}`;
