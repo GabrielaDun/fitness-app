@@ -8,36 +8,15 @@
       flex-wrap: wrap;
       gap: 10px; 
       margin: 40px;
-      align-items: center;
     
-      .gridItem {
-        flex: 1; 
-        display: flex;
-        justify-content: center;
-        @include respond-to (big-tablet) { 
-          flex: 3;
-        }
-    
-      }
-
-        .gridItem-enter {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-  
-        .gridItem-enter-active {
-          opacity: 1;
-          transform: scale(1);
-          transition: opacity 1300ms, transform 300ms;
-        }  
-  
-        .gridItem-exit {
-          opacity: 1;
-        }
-  
-        .gridItem-exit-active {
-          opacity: 0;
-          transition: opacity 300ms;
+        .gridItem {
+          flex: 1; 
+          display: flex;
+          flex: 4;
+          justify-content: center;
+          @include respond-to (big-tablet) { 
+            flex: 3;
+          }
         }
     
     }
@@ -46,8 +25,5 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 25px;
-      .btn {
-        background-color: red;
-      }
   }
 }
