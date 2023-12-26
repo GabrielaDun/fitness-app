@@ -50,7 +50,7 @@
         background-color: $color-light;
         color: $color-dark;
         display: flex;
-        padding: 20px;
+        padding: 5px;
         justify-content: space-between;
         @include respond-to(small-tablet) {
             justify-content: center;
