@@ -62,4 +62,9 @@
             color: $color-light;
         }
     }
+    .clickedTertiary {
+        @extend .tertiary;
+        background: $color-main;
+        color: $color-light;
+    }
 }

@@ -2,12 +2,15 @@ import styles from './Button.module.scss'
 
 const Button = ({ onClick, children, colorType, isActive}) => {
 
-    let buttonClass = styles.button
+    let buttonClass = styles.button;
+
     if (colorType === 'secondary') {
         buttonClass = styles.secondary;
     } else if (colorType === 'tertiary') {
         buttonClass = styles.tertiary
-    } 
+    } else if (colorType === 'clickedTertiary') {
+        buttonClass = styles.clickedTertiary
+    }
 
 
     return (
